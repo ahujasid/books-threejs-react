@@ -20,28 +20,51 @@ body{
   font-family: 'DM Mono';
 }
 
-first-fold{
+a{
+  text-decoration: none;
+  color: #E94826;
+}
+
+
+.main-container{
+  overflow-x: hidden;
+}
+
+.first-fold{
   display: flex;
   height: 90vh;
-  width: 100vw;
-  text-align: 'center';
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 h1{
   font-family: 'PP Mondwest';
   font-size: 120px;
+  line-height: 108%;
 }
 
+h4{
+  font-size: 32px;
+}
+
+.first-fold-links{
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+}
 
 
 
 .books-flex {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
   width: 100%;
 }
+
 
 .book-wrapper {
   width: 100%;

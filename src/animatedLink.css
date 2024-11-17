@@ -1,0 +1,90 @@
+.animated-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #E94826; /* red-500 */
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid #E94826; 
+    padding-bottom: 0.5rem; 
+  }
+  
+  .animated-link:hover {
+    color: #E94826; /* red-600 */
+  }
+  
+  .animated-link .mask {
+    position: relative;
+    display: inline-block;
+    height: 2rem;
+    overflow: hidden;
+  }
+  
+  .animated-link .link-container {
+    position: relative;
+    transition: transform 0.5s ease;
+  }
+  
+  .animated-link:hover .link-container {
+    transform: translateY(-2rem);
+  }
+  
+  .animated-link .title {
+    display: block;
+    font-size: inherit;
+    line-height: 2rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .animated-link .link-title1 {
+    transform-origin: right center;
+  }
+  
+  .animated-link .link-title2 {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    transform-origin: left center;
+    transform: rotate(12deg);
+  }
+  
+  .animated-link:hover .link-title1 {
+    transform: rotate(12deg);
+  }
+  
+  .animated-link:hover .link-title2 {
+    transform: rotate(0);
+  }
+  
+  .animated-link .link-icon {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.75rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .animated-link .icon {
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.5s ease;
+  }
+  
+  .animated-link .icon:nth-child(2) {
+    transform: translateX(-2rem);
+  }
+  
+  .animated-link:hover .icon:first-child {
+    transform: translateX(2rem);
+  }
+  
+  .animated-link:hover .icon:nth-child(2) {
+    transform: translateX(0);
+  }

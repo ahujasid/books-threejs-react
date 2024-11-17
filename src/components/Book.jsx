@@ -84,8 +84,11 @@ const Book = ({
 
     // Controls setup
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
+    controls.enableZoom = false; // Disable zoom
+    controls.enablePan = false;  // Disable camera panning
+    controls.enableDamping = true; // Keep damping for smooth movement
     controls.dampingFactor = 0.05;
+
     controls.target.set(0, 0, 0);
     controls.update();
 

@@ -2,17 +2,17 @@
 import React from 'react';
 import BookCard from './components/BookCard';
 import './App.css';
+import './Reset.css';
+import './animatedLink.css';
 import { booksData } from './BooksData';
+import AnimatedHeader from './components/AnimatedHeader';
 
 
 
 function App() {
   return (
     <div className = "main-container">
-      <div className='first-fold'>
-        <h1>Top five books I read this year</h1>
-        <h4>Because why the hell not?</h4>
-      </div>
+      <AnimatedHeader />
       <div className="books-flex">
         {booksData.map(book => (
           <div key={book.id} className="book-wrapper">
