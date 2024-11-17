@@ -29,10 +29,14 @@ export const booksData = [
       backCover: backCover1,
       spine: spine1,
       backgroundColor: '#f0f0f0',
+      textColor: '#222222',
       bookColor: 0x4A192C,
       particleColor: 0xFF69B4,
       pngColor: 0xFF69B4,
-      shaderCode: CIRCUIT_SHADER
+      shaderCode: CIRCUIT_SHADER,
+      title: 'What I Talk About When I Talk About Running',
+      author: 'Haruki Murakami',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
     },
     {
       id: 'book2',
@@ -40,10 +44,14 @@ export const booksData = [
       backCover: backCover2,
       spine: spine2,
       backgroundColor: '#f0f0f0',
+      textColor: '#222222',
       bookColor: 0x2C4A19,
       particleColor: 0x69FFB4,
       pngColor: 0x69FFB4,
-      shaderCode: DEFAULT_SHADER
+      shaderCode: DEFAULT_SHADER,
+      title: 'What I Talk About When I Talk About Running',
+      author: 'Haruki Murakami',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
     },
     {
       id: 'book3',
@@ -51,10 +59,14 @@ export const booksData = [
       backCover: backCover3,
       spine: spine3,
       backgroundColor: '#f0f0f0',
+      textColor: '#222222',
       bookColor: 0x192C4A,
       particleColor: 0xB4FF69,
       pngColor: 0xB4FF69,
-      shaderCode: RIPPLE_SHADER
+      shaderCode: RIPPLE_SHADER,
+      title: 'What I Talk About When I Talk About Running',
+      author: 'Haruki Murakami',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
     },
     {
       id: 'book4',
@@ -62,10 +74,14 @@ export const booksData = [
       backCover: backCover4,
       spine: spine4,
       backgroundColor: '#f0f0f0',
+      textColor: '#222222',
       bookColor: 0x4A2C19,
       particleColor: 0xFF9B69,
       pngColor: 0xFF9B69,
-      shaderCode: RAINBOW_SHADER
+      shaderCode: RAINBOW_SHADER,
+      title: 'What I Talk About When I Talk About Running',
+      author: 'Haruki Murakami',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
     },
     {
       id: 'book5',
@@ -73,9 +89,13 @@ export const booksData = [
       backCover: backCover5,
       spine: spine5,
       backgroundColor: '#f0f0f0',
+      textColor: '#222222',
       bookColor: 0x2C194A,
       particleColor: 0xB469FF,
       pngColor: 0xB469FF,
-      shaderCode: DEFAULT_SHADER
+      shaderCode: DEFAULT_SHADER,
+      title: 'What I Talk About When I Talk About Running',
+      author: 'Haruki Murakami',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
     }
   ];

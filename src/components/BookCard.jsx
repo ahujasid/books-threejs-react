@@ -7,10 +7,15 @@ const BookCard = ({
     backCoverUrl, 
     spineUrl, 
     bgColor,
+    textColor,
     bookColor,
     particleColor,
     pngColor,
-    shaderCode}) => {
+    shaderCode,
+    title,
+    author,
+    review
+    }) => {
         return(
             <div className="book-card" style={{backgroundColor: bgColor}}>
                 <Book
@@ -23,10 +28,10 @@ const BookCard = ({
                     pngColor={pngColor}
                     shaderCode={shaderCode}
                 />
-                <div className = "book-card-content">
-                    <h2>Book Title</h2>
-                    <h3>Author Name</h3>
-                    <p>Book Description</p>
+                <div className = "book-card-content" style={{"color": textColor}}>
+                    <h2>{title}</h2>
+                    <h3>{author}</h3>
+                    <p>{review}</p>
                 </div>
             </div>
 

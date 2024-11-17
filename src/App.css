@@ -1,8 +1,6 @@
 #root {
-  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 @font-face {
@@ -39,6 +37,8 @@ a{
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 h1{
@@ -68,7 +68,7 @@ h4{
 
 .book-wrapper {
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -79,6 +79,7 @@ h4{
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100%;
   justify-content: space-between;
 
 }

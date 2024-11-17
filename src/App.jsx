@@ -22,10 +22,14 @@ function App() {
               backCoverUrl={book.backCover}
               spineUrl={book.spine}
               bgColor={book.backgroundColor}
+              textColor = {book.textColor}
               bookColor={book.bookColor}
               particleColor={book.particleColor}
               pngColor={book.pngColor}
               shaderCode={book.shaderCode}
+              title={book.title}
+              author={book.author}
+              review={book.review}
             />
           </div>
         ))}
