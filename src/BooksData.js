@@ -12,9 +12,9 @@ import spine1 from './assets/books/book1/spine.png';
 import frontCover2 from './assets/books/book2/front-cover.png';
 import backCover2 from './assets/books/book2/back-cover.png';
 import spine2 from './assets/books/book2/spine.png';
-import frontCover3 from './assets/books/book1/front-cover.png';
-import backCover3 from './assets/books/book1/back-cover.png';
-import spine3 from './assets/books/book1/spine.png';
+import frontCover3 from './assets/books/book3/front-cover.png';
+import backCover3 from './assets/books/book3/back-cover.png';
+import spine3 from './assets/books/book3/spine.png';
 import frontCover4 from './assets/books/book1/front-cover.png';
 import backCover4 from './assets/books/book1/back-cover.png';
 import spine4 from './assets/books/book1/spine.png';
@@ -73,6 +73,28 @@ export const booksData = [
       frontCover: frontCover3,
       backCover: backCover3,
       spine: spine3,
+      backgroundColor: '#FBE9BF',
+      material: {
+        metalness: 1,
+        roughness: 0.2
+      },
+      textColor: '#4E3715',
+      bookColor: 0x3d210f,
+      particleColor: 0xFF9B69,
+      pngColor: 0xFF9B69,
+      shaderCode: DEFAULT_SHADER,
+      useShader: true,
+      blending: 'THREE.AdditiveBlending',
+      animationSpeed: 0.02,
+      title: 'The Emperor of All Maladies',
+      author: 'Siddhartha Mukherjee',
+      review: 'A beautiful exploration of the human spirit and the power of running.'
+    },
+    {
+      id: 'book4',
+      frontCover: frontCover4,
+      backCover: backCover4,
+      spine: spine4,
       backgroundColor: '#f0f0f0',
       material: {
         metalness: 1,
@@ -90,28 +112,7 @@ export const booksData = [
       author: 'Haruki Murakami',
       review: 'A beautiful exploration of the human spirit and the power of running.'
     },
-    {
-      id: 'book4',
-      frontCover: frontCover4,
-      backCover: backCover4,
-      spine: spine4,
-      backgroundColor: '#f0f0f0',
-      material: {
-        metalness: 1,
-        roughness: 0.2
-      },
-      textColor: '#222222',
-      bookColor: 0x4A2C19,
-      particleColor: 0xFF9B69,
-      pngColor: 0xFF9B69,
-      shaderCode: RIPPLE_SHADER_LIGHT,
-      useShader: true,
-      blending: 'THREE.AdditiveBlending',
-      animationSpeed: 0.02,
-      title: 'What I Talk About When I Talk About Running',
-      author: 'Haruki Murakami',
-      review: 'A beautiful exploration of the human spirit and the power of running.'
-    },
+
     {
       id: 'book5',
       frontCover: frontCover5,

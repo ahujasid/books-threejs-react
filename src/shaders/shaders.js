@@ -40,7 +40,7 @@ export const DEFAULT_SHADER = {
           vUv.y * 30.0 + sin(swirl) * 3.0
         ));
         
-        float mask = smoothstep(0.4, 0.2, dist);
+        float mask = smoothstep(0.35, 0.15, dist);
         float particles = smoothstep(0.6, 0.62, n) * mask;
         float scatter = noise(vUv * 40.0 + time * 0.1);
         float scatterParticles = smoothstep(0.7, 0.71, scatter) * 0.5 * mask;
