@@ -8,22 +8,16 @@ const Book = ({
   frontCoverUrl, 
   backCoverUrl, 
   spineUrl, 
-  bookColor = 0x4A192C,
-  particleColor = 0xFF69B4,
-  pngColor = 0xFF69B4,
+  bookColor,
+  particleColor,
+  pngColor,
   shaderCode
 }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
-
-
-
-    console.log(containerRef.current.clientWidth, containerRef.current.clientHeight);
-
     
-
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -36,22 +30,28 @@ const Book = ({
     camera.lookAt(0, 0, 0);
     
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ 
+      antialias: true, 
+      alpha: true,
+      precision: 'highp',
+      powerPreference: 'high-performance',
+      stencil: false
+    });
     renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.4;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    console.log(renderer.toneMapping, renderer.toneMappingExposure);
     
     containerRef.current.appendChild(renderer.domElement);
 
    // Lighting setup - exact same as original
    const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
    scene.add(ambientLight);
-    scene.background = new THREE.Color(0x444444);
+    // scene.background = new THREE.Color(0xF4BAFB);
    const mainLight = new THREE.PointLight(0xffd5b8, 0.3);
    mainLight.position.set(3, 2, 4);
    camera.add(mainLight);
@@ -74,16 +74,13 @@ const Book = ({
 
    scene.add(camera);
    
-   const mainLightHelper = new THREE.PointLightHelper(mainLight, 0.5);
-const fillLightHelper = new THREE.PointLightHelper(fillLight, 0.5);
-const spotLightHelper = new THREE.SpotLightHelper(spotLight);
-const rimLightHelper = new THREE.PointLightHelper(rimLight, 0.5);
+//    const mainLightHelper = new THREE.PointLightHelper(mainLight, 0.5);
+// const fillLightHelper = new THREE.PointLightHelper(fillLight, 0.5);
+// const spotLightHelper = new THREE.SpotLightHelper(spotLight);
+// const rimLightHelper = new THREE.PointLightHelper(rimLight, 0.5);
 
-scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
+// scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
 
-   console.log(
-    camera
-  );
 
     // Controls setup
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -185,7 +182,7 @@ scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
       return canvas;
     }
 
-    console.log(scene);
+  
 
 
     function createFullCoverGeometry(width, height, radius) {
@@ -246,13 +243,12 @@ scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
     // Load textures and create book
     const textureLoader = new THREE.TextureLoader();
     function loadTexture(url) {
-        return new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         textureLoader.load(
-            url, 
-            (texture) => {
-            // Improve texture quality
+          url,
+          (texture) => {
             texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            texture.minFilter = THREE.LinearFilter;
+            texture.minFilter = THREE.LinearMipmapLinearFilter;
             texture.magFilter = THREE.LinearFilter;
             texture.generateMipmaps = true;
             
@@ -263,11 +259,11 @@ scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
             texture.needsUpdate = true;
             
             resolve(texture);
-            }, 
-            undefined, 
-            reject
+          },
+          undefined,
+          reject
         );
-        });
+      });
     }
      
 
@@ -344,11 +340,12 @@ scene.add(mainLightHelper, fillLightHelper, spotLightHelper, rimLightHelper);
         // Particles
         const particleGeometry = createFullCoverGeometry(
           width + coverExtension - 0.2,
-          height + coverExtension - 0.2,
-          cornerRadius
+          height + coverExtension - 0.8,
+          0.01
         );
         const particleOverlay = new THREE.Mesh(particleGeometry, particleShaderMaterial);
         particleOverlay.position.z = depth/2 + coverThickness/2 + 0.09;
+        particleOverlay.position.y += 0.1;
   
         // Back cover
         const backCoverGeometry = createRoundedBoxGeometry(
