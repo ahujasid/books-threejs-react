@@ -3,12 +3,10 @@
     align-items: center;
     text-decoration: none;
     color: #E94826; /* red-500 */
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 500;
     transition: color 0.3s ease;
-    border-bottom: 2px solid #E94826; 
-    padding-bottom: 0.5rem; 
+    border-bottom: 1px solid #E94826; 
+    font-size: inherit;
+    padding-bottom: 0.25rem; 
   }
   
   .animated-link:hover {

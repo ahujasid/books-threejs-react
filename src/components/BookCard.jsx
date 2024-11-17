@@ -7,11 +7,15 @@ const BookCard = ({
     backCoverUrl, 
     spineUrl, 
     bgColor,
+    material,
     textColor,
     bookColor,
     particleColor,
     pngColor,
     shaderCode,
+    blendMode,
+    useShader,
+    animationSpeed,
     title,
     author,
     review
@@ -27,7 +31,12 @@ const BookCard = ({
                     particleColor={particleColor}
                     pngColor={pngColor}
                     shaderCode={shaderCode}
+                    animationSpeed={animationSpeed}
+                    blendMode={blendMode}
+                    useShader={useShader}
+                    bookCoverMaterial={material}
                 />
+
                 <div className = "book-card-content" style={{"color": textColor}}>
                     <h2>{title}</h2>
                     <h3>{author}</h3>

@@ -22,11 +22,15 @@ function App() {
               backCoverUrl={book.backCover}
               spineUrl={book.spine}
               bgColor={book.backgroundColor}
+              material={book.material}
               textColor = {book.textColor}
               bookColor={book.bookColor}
               particleColor={book.particleColor}
               pngColor={book.pngColor}
               shaderCode={book.shaderCode}
+              useShader={book.useShader}
+              blendMode={book.blending}
+              animationSpeed={book.animationSpeed}
               title={book.title}
               author={book.author}
               review={book.review}

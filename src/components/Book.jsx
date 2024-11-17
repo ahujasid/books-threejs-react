@@ -11,7 +11,11 @@ const Book = ({
   bookColor,
   particleColor,
   pngColor,
-  shaderCode
+  shaderCode,
+  animationSpeed,
+  blendMode,
+  useShader,
+  bookCoverMaterial
 }) => {
   const containerRef = useRef(null);
 
@@ -225,7 +229,12 @@ const Book = ({
       }
   
 
-  
+      const getBlendingMode = (blendModeString) => {
+        return blendModeString == 'THREE.AdditiveBlending' ? THREE.AdditiveBlending : THREE.NormalBlending;
+      };
+
+   
+      
       // Particle shader material
       const particleShaderMaterial = new THREE.ShaderMaterial({
         uniforms: {
@@ -239,7 +248,7 @@ const Book = ({
         side: THREE.DoubleSide,
         depthWrite: false,
         depthTest: true,
-        blending: THREE.AdditiveBlending
+        blending: getBlendingMode(blendMode)
       });
   
 
@@ -324,31 +333,35 @@ const Book = ({
           height + coverExtension,
           cornerRadius
         );
+
+      
         const frontText = new THREE.Mesh(frontTextGeometry, new THREE.MeshStandardMaterial({
           map: coverTextTexture,
           transparent: true,
           alphaTest: 0.1,
           depthWrite: false,
           side: THREE.DoubleSide,
-          metalness: 1,
-          roughness: 0.2,
+          metalness: bookCoverMaterial.metalness,
+          roughness: bookCoverMaterial.roughness,
           color: pngColor,
           emissive: pngColor,
-          emissiveIntensity: 0.2,
+          emissiveIntensity: 0.3,
           flatShading: false,
         precision: "highp"
         }));
         frontText.position.z = depth/2 + coverThickness/2 + 0.08;
   
         // Particles
+      
         const particleGeometry = createFullCoverGeometry(
           width + coverExtension - 0.2,
-          height + coverExtension - 0.8,
+          height + coverExtension - 0.2,
           0.01
         );
         const particleOverlay = new THREE.Mesh(particleGeometry, particleShaderMaterial);
         particleOverlay.position.z = depth/2 + coverThickness/2 + 0.09;
-        particleOverlay.position.y += 0.1;
+        // particleOverlay.position.y += 0.1;
+      
   
         // Back cover
         const backCoverGeometry = createRoundedBoxGeometry(
@@ -372,11 +385,11 @@ const Book = ({
           alphaTest: 0.1,
           depthWrite: false,
           side: THREE.DoubleSide,
-          metalness: 1,
-          roughness: 0.2,
+          metalness: bookCoverMaterial.metalness,
+          roughness: bookCoverMaterial.roughness,
           color: pngColor,
           emissive: pngColor,
-          emissiveIntensity: 0.2,
+          emissiveIntensity: 0.3,
           flatShading: false,
          precision: "highp"
         }));
@@ -404,11 +417,11 @@ const Book = ({
         alphaTest: 0.1,
         depthWrite: false,
         side: THREE.FrontSide,
-        metalness: 1,
-        roughness: 0.2,
+        metalness: bookCoverMaterial.metalness,
+        roughness: bookCoverMaterial.roughness,
         color: pngColor,
         emissive: pngColor,
-        emissiveIntensity: 0.2,
+        emissiveIntensity: 0.3,
         flatShading: false,
         precision: "highp"
       }));
@@ -435,7 +448,8 @@ const Book = ({
       book.add(backText);
       book.add(spine);
       book.add(spineText);
-      book.add(particleOverlay);
+      if(useShader) 
+        {book.add(particleOverlay);}
 
       // Set initial rotation
       book.rotation.x = Math.PI * -0.15;
@@ -452,7 +466,7 @@ const Book = ({
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
-      particleShaderMaterial.uniforms.time.value += 0.02;
+      particleShaderMaterial.uniforms.time.value += animationSpeed;
       renderer.render(scene, camera);
     }
     animate();
@@ -489,7 +503,7 @@ const Book = ({
         }
       });
     };
-  }, [frontCoverUrl, backCoverUrl, spineUrl, bookColor, particleColor, pngColor, shaderCode]);
+  }, [frontCoverUrl, backCoverUrl, spineUrl, bookColor, particleColor, pngColor, shaderCode, animationSpeed, blendMode, bookCoverMaterial]);
 
   return <div ref={containerRef} id={containerId} className="book-container" />;
 };
