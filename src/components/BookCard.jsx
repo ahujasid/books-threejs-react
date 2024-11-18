@@ -43,8 +43,8 @@ const BookCard = ({
                 />
 
                 <div className = "book-card-content" style={{"color": textColor}}>
-                    <h2>{title}</h2>
                     <h3>{author}</h3>
+                    <h2>{title}</h2>
                     <p>{review}</p>
                 </div>
             </div>
