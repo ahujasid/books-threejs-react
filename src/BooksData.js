@@ -15,9 +15,9 @@ import spine2 from './assets/books/book2/spine.png';
 import frontCover3 from './assets/books/book3/front-cover.png';
 import backCover3 from './assets/books/book3/back-cover.png';
 import spine3 from './assets/books/book3/spine.png';
-import frontCover4 from './assets/books/book1/front-cover.png';
-import backCover4 from './assets/books/book1/back-cover.png';
-import spine4 from './assets/books/book1/spine.png';
+import frontCover4 from './assets/books/book4/front-cover.png';
+import backCover4 from './assets/books/book4/back-cover.png';
+import spine4 from './assets/books/book4/spine.png';
 import frontCover5 from './assets/books/book1/front-cover.png';
 import backCover5 from './assets/books/book1/back-cover.png';
 import spine5 from './assets/books/book1/spine.png';
@@ -41,7 +41,7 @@ export const booksData = [
   shaderCode: CRYSTAL_FRACTURE_SHADER,
   useShader: true,
   blending: 'THREE.AdditiveBlending',
-  animationSpeed: 0.05,
+  animationSpeed: 0.02,
   title: 'CODE: The Hidden Lives of Computer Hardware and Software',
   author: 'Charles Petzold',
   review: 'A beautiful exploration of the human spirit and the power of running.'
@@ -74,7 +74,7 @@ export const booksData = [
     frontCover: frontCover3,
     backCover: backCover3,
     spine: spine3,
-    backgroundColor: '#FBE9BF',
+    backgroundColor: '#FFF2D3',
     material: {
       metalness: 1,
       roughness: 0.2
@@ -98,7 +98,7 @@ export const booksData = [
     spine: spine4,
     backgroundColor: '#f0f0f0',
     material: {
-      metalness: 1,
+      metalness: 0.6,
       roughness: 0.2
     },
     textColor: '#222222',
@@ -130,7 +130,7 @@ export const booksData = [
     shaderCode: FLOWER_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
-    animationSpeed: 0.05,
+    animationSpeed: 0.02,
     title: 'Flowers For Algernon',
     author: 'Daniel Keyes',
     review: 'A beautiful exploration of the human spirit and the power of running.'

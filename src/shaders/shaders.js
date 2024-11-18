@@ -451,33 +451,37 @@ export const FLOWER_SHADER = {
       void main() {
         vec2 moved = vUv + vec2(time * 0.1);
         
-        // Create multiple layers of smoke
-        float n1 = noise(moved * 3.0);
-        float n2 = noise((moved + vec2(1.0)) * 4.0);
-        float n3 = noise((moved - vec2(time * 0.2)) * 5.0);
+        // Create multiple layers of smoke with reduced intensity
+        float n1 = noise(moved * 3.0) * 0.7; // Reduced intensity
+        float n2 = noise((moved + vec2(1.0)) * 4.0) * 0.7;
+        float n3 = noise((moved - vec2(time * 0.2)) * 5.0) * 0.5;
         
         // Create threading effect
         vec2 thread = vec2(
           sin(vUv.y * 10.0 + time + n1 * 5.0),
           cos(vUv.x * 10.0 - time + n2 * 5.0)
         );
-        float threadPattern = smoothstep(0.5, 0.51, noise(thread));
+        float threadPattern = smoothstep(0.5, 0.51, noise(thread)) * 0.8; // Reduced intensity
+        
+        // Add center dampening
+        float centerDamp = smoothstep(0.0, 0.5, abs(vUv.x - 0.5)) * 0.8 + 0.2;
         
         // Combine with vertical drift
         float drift = noise(vec2(vUv.x * 2.0, vUv.y + time * 0.1));
         
-        // Final composition
+        // Final composition with center dampening
         float pattern = mix(
           mix(n1, n2, 0.5) + n3 * 0.3,
           threadPattern,
           0.3
-        ) * drift;
+        ) * drift * centerDamp;
         
-        float alpha = smoothstep(0.1, 0.6, pattern);
+        // Reduced overall alpha
+        float alpha = smoothstep(0.1, 0.6, pattern) * 0.8;
         gl_FragColor = vec4(color, alpha);
       }
     `
-  };
+};
   
   export const CRYSTAL_FRACTURE_SHADER = {
     vertexShader: `
