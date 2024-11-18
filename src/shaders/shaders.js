@@ -1,5 +1,5 @@
 // src/constants/shaders.js
-export const DEFAULT_SHADER = {
+export const FLOWER_SHADER = {
     vertexShader: `
       varying vec2 vUv;
       void main() {
@@ -57,7 +57,7 @@ export const DEFAULT_SHADER = {
       void main() {
         vUv = uv;
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
+    }
     `,
     fragmentShader: `
       uniform float time;
@@ -251,6 +251,303 @@ export const DEFAULT_SHADER = {
         float alpha = wave * falloff * 0.5; // Reduced overall opacity
         
         gl_FragColor = vec4(color, alpha);
+      }
+    `
+  };
+
+  export const CELLULAR_PULSE_SHADER = {
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform vec3 color;
+      varying vec2 vUv;
+  
+      // Hash function needs to be declared before it's used
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+  
+      // Cellular noise function
+      float cellular(vec2 p) {
+        vec2 i = floor(p);
+        vec2 f = fract(p);
+        
+        float minDist = 1.0;
+        
+        for(int y = -1; y <= 1; y++) {
+          for(int x = -1; x <= 1; x++) {
+            vec2 neighbor = vec2(float(x), float(y));
+            vec2 point = neighbor + sin(time * 0.5 + hash(i + neighbor) * 6.28) * 0.5;
+            minDist = min(minDist, length(point + f));
+          }
+        }
+        return minDist;
+      }
+  
+      void main() {
+        // Create organic, cell-like patterns
+        float cells = cellular(vUv * 8.0);
+        float cells2 = cellular(vUv * 4.0 + time * 0.2);
+        
+        // Create spreading/dividing effect
+        vec2 center = vec2(0.5);
+        float dist = length(vUv - center);
+        float spread = sin(dist * 10.0 - time) * 0.5 + 0.5;
+        
+        // Combine patterns
+        float pattern = mix(cells, cells2, 0.5) * spread;
+        
+        // Add pulsing glow
+        float glow = exp(-dist * 4.0) * (0.5 + 0.5 * sin(time));
+        
+        // Final color
+        float alpha = smoothstep(0.2, 0.8, pattern) + glow * 0.3;
+        gl_FragColor = vec4(color, alpha);
+      }
+    `
+  };
+  
+  
+  
+  
+  export const MOTION_RAIN_SHADER = {
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform vec3 color;
+      varying vec2 vUv;
+  
+      float rain(vec2 uv) {
+        float drops = 0.0;
+        for(float i = 0.0; i < 20.0; i++) {
+          vec2 dropPos = vec2(
+            fract(sin(i * 123.45) * 43758.5453123),
+            fract(time * (0.5 + sin(i) * 0.1) + sin(i * 321.45) * 43758.5453123)
+          );
+          float drop = smoothstep(0.03, 0.02, length(uv - dropPos));
+          drops += drop;
+        }
+        return drops;
+      }
+  
+      void main() {
+        // Create rhythm pattern
+        float rhythm = sin(vUv.x * 20.0 + time * 3.0) * 0.5 + 0.5;
+        rhythm *= sin(vUv.x * 10.0 - time * 2.0) * 0.5 + 0.5;
+        
+        // Add motion blur effect
+        vec2 motion = vec2(time * 0.2, 0.0);
+        float blur = smoothstep(0.4, 0.6, fract(vUv.x * 5.0 - time));
+        
+        // Add rain/sweat effect
+        float raindrops = rain(vUv);
+        
+        // Create horizontal movement lines
+        float lines = smoothstep(0.1, 0.0, abs(fract(vUv.y * 20.0 + vUv.x - time) - 0.5));
+        
+        // Combine everything with breath-like pulsing
+        float breath = sin(time) * 0.5 + 0.5;
+        float final = rhythm * 0.3 + blur * 0.2 + raindrops * 0.3 + lines * 0.2;
+        final *= mix(0.8, 1.0, breath);
+        
+        gl_FragColor = vec4(color, final);
+      }
+    `
+  };
+
+  export const HOLOGRAM_GLOW_SHADER = {
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform vec3 color;
+      varying vec2 vUv;
+  
+      float line(vec2 uv, float speed, float height) {
+        return smoothstep(
+          0.0,
+          0.3,
+          abs(sin(uv.x * 10.0 + time * speed) * 0.5 + sin(uv.y * 10.0 + time) * 0.5)
+        ) * height;
+      }
+  
+      void main() {
+        // Create scanlines
+        float scan = fract(vUv.y * 50.0 + time * 0.5);
+        scan = smoothstep(0.5, 0.0, scan);
+  
+        // Create interference patterns
+        float interference = line(vUv, 2.0, 0.5) + line(vUv * 2.0, -1.5, 0.25);
+        
+        // Create glitch effect
+        float glitch = step(0.98, sin(time * 50.0 + vUv.y * 100.0));
+        vec2 glitchOffset = vec2(
+          glitch * sin(time) * 0.02,
+          glitch * cos(time) * 0.02
+        );
+        
+        // Add edge glow
+        vec2 center = vUv - vec2(0.5) + glitchOffset;
+        float dist = length(center);
+        float edge = smoothstep(0.5, 0.4, dist);
+        float glow = smoothstep(0.5, 0.2, dist) * sin(time * 2.0) * 0.5 + 0.5;
+  
+        float final = interference * scan + edge * 0.5 + glow * 0.3;
+        final *= smoothstep(1.0, 0.8, dist);
+  
+        gl_FragColor = vec4(color, final);
+      }
+    `
+  };
+  
+  export const SMOKE_THREADS_SHADER = {
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform vec3 color;
+      varying vec2 vUv;
+  
+      float random(vec2 st) {
+        return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+      }
+  
+      float noise(vec2 st) {
+        vec2 i = floor(st);
+        vec2 f = fract(st);
+        
+        float a = random(i);
+        float b = random(i + vec2(1.0, 0.0));
+        float c = random(i + vec2(0.0, 1.0));
+        float d = random(i + vec2(1.0, 1.0));
+  
+        vec2 u = f * f * (3.0 - 2.0 * f);
+        return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+      }
+  
+      void main() {
+        vec2 moved = vUv + vec2(time * 0.1);
+        
+        // Create multiple layers of smoke
+        float n1 = noise(moved * 3.0);
+        float n2 = noise((moved + vec2(1.0)) * 4.0);
+        float n3 = noise((moved - vec2(time * 0.2)) * 5.0);
+        
+        // Create threading effect
+        vec2 thread = vec2(
+          sin(vUv.y * 10.0 + time + n1 * 5.0),
+          cos(vUv.x * 10.0 - time + n2 * 5.0)
+        );
+        float threadPattern = smoothstep(0.5, 0.51, noise(thread));
+        
+        // Combine with vertical drift
+        float drift = noise(vec2(vUv.x * 2.0, vUv.y + time * 0.1));
+        
+        // Final composition
+        float pattern = mix(
+          mix(n1, n2, 0.5) + n3 * 0.3,
+          threadPattern,
+          0.3
+        ) * drift;
+        
+        float alpha = smoothstep(0.1, 0.6, pattern);
+        gl_FragColor = vec4(color, alpha);
+      }
+    `
+  };
+  
+  export const CRYSTAL_FRACTURE_SHADER = {
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform vec3 color;
+      varying vec2 vUv;
+  
+      float voronoi(vec2 x) {
+        vec2 n = floor(x);
+        vec2 f = fract(x);
+  
+        float m = 8.0;
+        for(int j = -1; j <= 1; j++) {
+          for(int i = -1; i <= 1; i++) {
+            vec2 g = vec2(float(i), float(j));
+            vec2 o = vec2(
+              sin(time * 0.2 + dot(n + g, vec2(13.0, 7.0))),
+              cos(time * 0.2 + dot(n + g, vec2(7.0, 13.0)))
+            ) * 0.5 + 0.5;
+            vec2 r = g + o - f;
+            float d = dot(r, r);
+            m = min(m, d);
+          }
+        }
+        return sqrt(m);
+      }
+  
+      // Function to create text area mask
+      float getTextMask(vec2 uv) {
+        // Position and size of text area
+        vec2 textPosition = vec2(0.5, 0.2); // Center x, lower y for bottom placement
+        vec2 textSize = vec2(0.3, 0.2);     // Width and height of text area
+        
+        vec2 fromCenter = abs(uv - textPosition);
+        vec2 maskEdge = smoothstep(textSize * 0.5 - 0.01, textSize * 0.5, fromCenter);
+        
+        return 1.0 - (1.0 - maskEdge.x) * (1.0 - maskEdge.y);
+      }
+  
+      void main() {
+        // Create crystalline structure
+        float v1 = voronoi(vUv * 5.0);
+        float v2 = voronoi(vUv * 8.0 + time * 0.2);
+        
+        // Add fracture lines
+        vec2 grid = abs(fract(vUv * 8.0 - 0.5) - 0.5) / fwidth(vUv * 8.0);
+        float lines = min(grid.x, grid.y);
+        
+        // Create shimmering effect
+        float shimmer = sin(v1 * 10.0 + time) * 0.5 + 0.5;
+        
+        // Combine effects
+        float pattern = mix(v1, v2, 0.5) * shimmer;
+        pattern = mix(pattern, 1.0 - lines, 0.3);
+        
+        // Add edge highlighting
+        float edge = 1.0 - smoothstep(0.2, 0.21, lines);
+        pattern += edge * shimmer * 0.5;
+  
+        // Apply text mask
+        float mask = getTextMask(vUv);
+        
+        // Final output with mask
+        gl_FragColor = vec4(color, pattern * mask);
       }
     `
   };
