@@ -28,7 +28,7 @@ export const booksData = [
   id: 'book1',
   frontCover: frontCover1,
   backCover: backCover1,
-  spine: spine5,
+  spine: spine1,
   backgroundColor: '#F1F2FF',
   material: {
     metalness: 1,
