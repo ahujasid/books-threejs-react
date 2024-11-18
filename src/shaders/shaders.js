@@ -268,54 +268,55 @@ export const FLOWER_SHADER = {
       uniform vec3 color;
       varying vec2 vUv;
   
-      // Hash function needs to be declared before it's used
-      float hash(vec2 p) {
-        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-      }
-  
-      // Cellular noise function
-      float cellular(vec2 p) {
+      float noise(vec2 p) {
         vec2 i = floor(p);
         vec2 f = fract(p);
         
-        float minDist = 1.0;
+        vec2 u = f * f * (3.0 - 2.0 * f);
         
-        for(int y = -1; y <= 1; y++) {
-          for(int x = -1; x <= 1; x++) {
-            vec2 neighbor = vec2(float(x), float(y));
-            vec2 point = neighbor + sin(time * 0.5 + hash(i + neighbor) * 6.28) * 0.5;
-            minDist = min(minDist, length(point + f));
-          }
-        }
-        return minDist;
+        float a = sin(dot(i, vec2(127.1, 311.7)) + time * 0.3);
+        float b = sin(dot(i + vec2(1.0, 0.0), vec2(127.1, 311.7)) + time * 0.3);
+        float c = sin(dot(i + vec2(0.0, 1.0), vec2(127.1, 311.7)) + time * 0.3);
+        float d = sin(dot(i + vec2(1.0, 1.0), vec2(127.1, 311.7)) + time * 0.3);
+        
+        return mix(
+          mix(a, b, u.x),
+          mix(c, d, u.x),
+          u.y
+        );
       }
   
       void main() {
-        // Create organic, cell-like patterns
-        float cells = cellular(vUv * 8.0);
-        float cells2 = cellular(vUv * 4.0 + time * 0.2);
-        
-        // Create spreading/dividing effect
         vec2 center = vec2(0.5);
         float dist = length(vUv - center);
-        float spread = sin(dist * 10.0 - time) * 0.5 + 0.5;
         
-        // Combine patterns
-        float pattern = mix(cells, cells2, 0.5) * spread;
+        float flow = noise(vUv * 5.0);
+        flow += noise(vUv * 10.0 + time * 0.2) * 0.5;
         
-        // Add pulsing glow
-        float glow = exp(-dist * 4.0) * (0.5 + 0.5 * sin(time));
+        float movement = sin(dist * 6.0 - time * 0.4) * 0.5 + 0.5;
         
-        // Final color
-        float alpha = smoothstep(0.2, 0.8, pattern) + glow * 0.3;
+        float pattern = flow * movement;
+        
+        float glow = exp(-dist * 3.5) * (0.5 + 0.5 * sin(time * 0.4));
+        
+        // Center fade
+        float centerFade = smoothstep(0.72, 0.2, dist);
+        
+        // Much stronger bottom fade
+        float bottomFade = smoothstep(0.15, 0.4, vUv.y);  // Starts at 60% height, fully faded by 85%
+        
+        // Add extra power to the bottom fade
+        bottomFade = bottomFade * bottomFade;  // Square it for stronger fade
+        
+        float fade = centerFade * bottomFade;
+        
+        float alpha = (smoothstep(0.35, 0.65, pattern) + glow * 0.3) * fade;
         gl_FragColor = vec4(color, alpha);
       }
     `
-  };
-  
-  
-  
-  
+};
+
+
   export const MOTION_RAIN_SHADER = {
     vertexShader: `
       varying vec2 vUv;

@@ -1,12 +1,7 @@
 import { 
   FLOWER_SHADER, 
-  CIRCUIT_SHADER, 
-  RIPPLE_SHADER_LIGHT, 
   RIPPLE_SHADER,
-  CIRCUIT_SHADER_SMALL_MASKED,
   CELLULAR_PULSE_SHADER,
-  MOTION_RAIN_SHADER,
-  HOLOGRAM_GLOW_SHADER,
   SMOKE_THREADS_SHADER,
   CRYSTAL_FRACTURE_SHADER
 } from './shaders/shaders';
@@ -69,7 +64,7 @@ export const booksData = [
     shaderCode: RIPPLE_SHADER,
     useShader: false,
     blending: 'THREE.NormalBlending',
-    animationSpeed: 0.008,
+    animationSpeed: 0.02,
     title: 'The Creative Act: A Way Of Being',
     author: 'Rick Rubin',
     review: 'A beautiful exploration of the human spirit and the power of running.'
@@ -135,7 +130,7 @@ export const booksData = [
     shaderCode: FLOWER_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
-    animationSpeed: 0.06,
+    animationSpeed: 0.05,
     title: 'Flowers For Algernon',
     author: 'Daniel Keyes',
     review: 'A beautiful exploration of the human spirit and the power of running.'
