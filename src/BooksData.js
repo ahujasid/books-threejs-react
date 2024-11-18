@@ -29,12 +29,12 @@ export const booksData = [
     frontCover: frontCover4,
     backCover: backCover4,
     spine: spine4,
-    backgroundColor: '#E8F5E9',
+    backgroundColor: '#1D472C',
     material: {
       metalness: 0.6,
       roughness: 0.2
     },
-    textColor: '#1D2D4A',
+    textColor: '#FFE366',
     bookColor: 0x2C4A19,
     particleColor: 0xFF8C00,
     pngColor: 0x90EE90,
@@ -51,13 +51,13 @@ export const booksData = [
     frontCover: frontCover3,
     backCover: backCover3,
     spine: spine3,
-    backgroundColor: '#FFF2D3',
+    backgroundColor: '#CF9A78',
     material: {
       metalness: 1,
       roughness: 0.2
     },
-    textColor: '#4E3715',
-    bookColor: 0x3d210f,
+    textColor: '#3F2311',
+    bookColor: 0x241106,
     particleColor: 0xFF9B69,
     pngColor: 0xFF9B69,
     shaderCode: CELLULAR_PULSE_SHADER,
@@ -69,38 +69,16 @@ export const booksData = [
     review: 'A beautiful exploration of the human spirit and the power of running.'
   },
   {
-    id: 'creative-act-book',
-    frontCover: frontCover2,
-    backCover: backCover2,
-    spine: spine2,
-    backgroundColor: '#f0f0f0',
-    material: {
-      metalness: 0,
-      roughness: 1
-    },
-    textColor: '#222222',
-    bookColor: 0x916d53,
-    particleColor: 0x010101,
-    pngColor: 0x000000,
-    shaderCode: RIPPLE_SHADER,
-    useShader: false,
-    blending: 'THREE.NormalBlending',
-    animationSpeed: 0.02,
-    title: 'The Creative Act: A Way Of Being',
-    author: 'Rick Rubin',
-    review: 'A beautiful exploration of the human spirit and the power of running.'
-  },
-  {
     id: 'code-book',
     frontCover: frontCover1,
     backCover: backCover1,
     spine: spine1,
-    backgroundColor: '#F1F2FF',
+    backgroundColor: '#231D47',
     material: {
       metalness: 1,
       roughness: 0.2
     },
-    textColor: '#14144B',
+    textColor: '#F5C2FB',
     bookColor: 0x2C194A,
     particleColor: 0xB469FF,
     pngColor: 0xB469FF,
@@ -113,19 +91,42 @@ export const booksData = [
     review: 'A beautiful exploration of the human spirit and the power of running.'
   },
   {
+    id: 'creative-act-book',
+    frontCover: frontCover2,
+    backCover: backCover2,
+    spine: spine2,
+    backgroundColor: '#F0F0F0',
+    material: {
+      metalness: 0,
+      roughness: 1
+    },
+    textColor: '#222',
+    bookColor: 0x916d53,
+    particleColor: 0x010101,
+    pngColor: 0x000000,
+    shaderCode: RIPPLE_SHADER,
+    useShader: false,
+    blending: 'THREE.NormalBlending',
+    animationSpeed: 0.02,
+    title: 'The Creative Act: A Way Of Being',
+    author: 'Rick Rubin',
+    review: 'A beautiful exploration of the human spirit and the power of running.'
+  },
+
+  {
     id: 'algernon-book',
     frontCover: frontCover5,
     backCover: backCover5,
     spine: spine5,
-    backgroundColor: '#F5DFFA',
+    backgroundColor: '#411E40',
     material: {
       metalness: 1,
       roughness: 0.2,
     },
-    textColor: '#3B2852',
-    bookColor: 0x4A192C,
+    textColor: '#FAC3FF',
+    bookColor: 0x3d0f17,
     particleColor: 0xFF69B4,
-    pngColor: 0xff8ac4,
+    pngColor: 0xFFB6C1,
     shaderCode: FLOWER_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
