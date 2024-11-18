@@ -18,9 +18,9 @@ import spine3 from './assets/books/book3/spine.png';
 import frontCover4 from './assets/books/book4/front-cover.png';
 import backCover4 from './assets/books/book4/back-cover.png';
 import spine4 from './assets/books/book4/spine.png';
-import frontCover5 from './assets/books/book1/front-cover.png';
-import backCover5 from './assets/books/book1/back-cover.png';
-import spine5 from './assets/books/book1/spine.png';
+import frontCover5 from './assets/books/book5/front-cover.png';
+import backCover5 from './assets/books/book5/back-cover.png';
+import spine5 from './assets/books/book5/spine.png';
 
 
 export const booksData = [
@@ -29,12 +29,12 @@ export const booksData = [
   frontCover: frontCover1,
   backCover: backCover1,
   spine: spine5,
-  backgroundColor: '#f0f0f0',
+  backgroundColor: '#F1F2FF',
   material: {
     metalness: 1,
     roughness: 0.2
   },
-  textColor: '#222222',
+  textColor: '#14144B',
   bookColor: 0x2C194A,
   particleColor: 0xB469FF,
   pngColor: 0xB469FF,
@@ -96,12 +96,12 @@ export const booksData = [
     frontCover: frontCover4,
     backCover: backCover4,
     spine: spine4,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#F1F6FF',
     material: {
       metalness: 0.6,
       roughness: 0.2
     },
-    textColor: '#222222',
+    textColor: '#1D2D4A',
     bookColor: 0x192C4A,
     particleColor: 0xB4FF69,
     pngColor: 0xB4FF69,
@@ -117,7 +117,7 @@ export const booksData = [
     id: 'book5',
     frontCover: frontCover5,
     backCover: backCover5,
-    spine: spine1,
+    spine: spine5,
     backgroundColor: '#F5DFFA',
     material: {
       metalness: 1,
@@ -126,7 +126,7 @@ export const booksData = [
     textColor: '#3B2852',
     bookColor: 0x4A192C,
     particleColor: 0xFF69B4,
-    pngColor: 0xFF69B4,
+    pngColor: 0xff8ac4,
     shaderCode: FLOWER_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
