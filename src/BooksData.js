@@ -29,12 +29,12 @@ export const booksData = [
     frontCover: frontCover4,
     backCover: backCover4,
     spine: spine4,
-    backgroundColor: '#1D472C',
+    backgroundColor: '#E3FFE5',
     material: {
       metalness: 0.6,
       roughness: 0.2
     },
-    textColor: '#FFE366',
+    textColor: '#222',
     bookColor: 0x2C4A19,
     particleColor: 0xFF8C00,
     pngColor: 0x90EE90,
@@ -47,38 +47,16 @@ export const booksData = [
     review: 'A beautiful exploration of the human spirit and the power of running.'
   },
   {
-    id: 'maladies-book',
-    frontCover: frontCover3,
-    backCover: backCover3,
-    spine: spine3,
-    backgroundColor: '#CF9A78',
-    material: {
-      metalness: 1,
-      roughness: 0.2
-    },
-    textColor: '#3F2311',
-    bookColor: 0x241106,
-    particleColor: 0xFF9B69,
-    pngColor: 0xFF9B69,
-    shaderCode: CELLULAR_PULSE_SHADER,
-    useShader: true,
-    blending: 'THREE.AdditiveBlending',
-    animationSpeed: 0.02,
-    title: 'The Emperor of All Maladies',
-    author: 'Siddhartha Mukherjee',
-    review: 'A beautiful exploration of the human spirit and the power of running.'
-  },
-  {
     id: 'code-book',
     frontCover: frontCover1,
     backCover: backCover1,
     spine: spine1,
-    backgroundColor: '#231D47',
+    backgroundColor: '#F2F3FF',
     material: {
       metalness: 1,
       roughness: 0.2
     },
-    textColor: '#F5C2FB',
+    textColor: '#222',
     bookColor: 0x2C194A,
     particleColor: 0xB469FF,
     pngColor: 0xB469FF,
@@ -95,12 +73,12 @@ export const booksData = [
     frontCover: frontCover2,
     backCover: backCover2,
     spine: spine2,
-    backgroundColor: '#F0F0F0',
+    backgroundColor: '#FBFBFB',
     material: {
       metalness: 0,
       roughness: 1
     },
-    textColor: '#222',
+    textColor: '#222222',
     bookColor: 0x916d53,
     particleColor: 0x010101,
     pngColor: 0x000000,
@@ -114,19 +92,41 @@ export const booksData = [
   },
 
   {
+    id: 'maladies-book',
+    frontCover: frontCover3,
+    backCover: backCover3,
+    spine: spine3,
+    backgroundColor: '#FFEBE0',
+    material: {
+      metalness: 1,
+      roughness: 0.2
+    },
+    textColor: '#222',
+    bookColor: 0x3d210f,
+    particleColor: 0xFF9B69,
+    pngColor: 0xFF9B69,
+    shaderCode: CELLULAR_PULSE_SHADER,
+    useShader: true,
+    blending: 'THREE.AdditiveBlending',
+    animationSpeed: 0.02,
+    title: 'The Emperor of All Maladies',
+    author: 'Siddhartha Mukherjee',
+    review: 'A beautiful exploration of the human spirit and the power of running.'
+  },
+  {
     id: 'algernon-book',
     frontCover: frontCover5,
     backCover: backCover5,
     spine: spine5,
-    backgroundColor: '#411E40',
+    backgroundColor: '#FCF0FF',
     material: {
       metalness: 1,
       roughness: 0.2,
     },
-    textColor: '#FAC3FF',
-    bookColor: 0x3d0f17,
+    textColor: '#222',
+    bookColor: 0x4A192C,
     particleColor: 0xFF69B4,
-    pngColor: 0xFFB6C1,
+    pngColor: 0xff8ac4,
     shaderCode: FLOWER_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
