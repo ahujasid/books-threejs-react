@@ -29,12 +29,12 @@ export const booksData = [
     frontCover: frontCover4,
     backCover: backCover4,
     spine: spine4,
-    backgroundColor: '#F8F6EA',
+    backgroundColor: '#F4F8EA',
     material: {
       metalness: 0.6,
       roughness: 0.2
     },
-    textColor: '#3B2414',
+    textColor: '#0D341A',
     bookColor: 0x2C4A19,
     particleColor: 0xFF8C00,
     pngColor: 0x90EE90,
@@ -51,7 +51,7 @@ export const booksData = [
     frontCover: frontCover1,
     backCover: backCover1,
     spine: spine1,
-    backgroundColor: '#EFEDEB',
+    backgroundColor: '#E3E3EE',
     material: {
       metalness: 1,
       roughness: 0.2
@@ -118,12 +118,12 @@ export const booksData = [
     frontCover: frontCover5,
     backCover: backCover5,
     spine: spine5,
-    backgroundColor: '#F4F8EA',
+    backgroundColor: '#DCDCEA',
     material: {
       metalness: 1,
       roughness: 0.2,
     },
-    textColor: '#182D1F',
+    textColor: '#26182D',
     bookColor: 0x4A192C,
     particleColor: 0xFF69B4,
     pngColor: 0xff8ac4,
