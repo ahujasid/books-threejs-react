@@ -15,7 +15,8 @@ const Book = ({
   animationSpeed,
   blendMode,
   useShader,
-  bookCoverMaterial
+  bookCoverMaterial,
+  onLoaded
 }) => {
   const containerRef = useRef(null);
 
@@ -284,6 +285,7 @@ const Book = ({
         loadTexture(spineUrl),
         loadTexture(backCoverUrl)
       ]).then(([coverTextTexture, spineTexture, backTextTexture]) => {
+        console.log('Textures loaded successfully');
         // Create pages
         const pagesGeometry = createRoundedBoxGeometry(width - 0.1, height - 0.1, depth, cornerRadius);
         const pagesMaterial = Array(6).fill().map(() => new THREE.MeshStandardMaterial({
@@ -457,9 +459,21 @@ const Book = ({
       book.rotation.z = Math.PI * 0.05;
 
       scene.add(book);
+
+      console.log('About to call onLoaded');
+      console.log('onLoaded exists:', !!onLoaded);
+     
+      if (onLoaded) {
+        
+        onLoaded();
+        console.log('onLoaded called');
+      }
     })
     .catch(error => {
         console.error('Error creating book:', error);
+        if (onLoaded) {
+          console.log('onLoaded called (from error)');;
+        }
       });
 
     // Animation loop

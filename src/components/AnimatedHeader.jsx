@@ -3,7 +3,7 @@ import AnimatedLink from './AnimatedLink';
 
 const AnimatedText = ({ text, delay = 0 }) => {
   const [displayText, setDisplayText] = useState(text);
-  const letters = "ABCDEFGHIJ23847204";
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   
   useEffect(() => {
     let iteration = 0;
@@ -33,7 +33,7 @@ const AnimatedText = ({ text, delay = 0 }) => {
           clearInterval(interval);
         }
 
-        iteration += 1/3;
+        iteration += 1/2;
       }, 10);
     }, delay);
 

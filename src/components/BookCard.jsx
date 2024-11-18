@@ -18,7 +18,8 @@ const BookCard = ({
     animationSpeed,
     title,
     author,
-    review
+    review,
+    onLoaded
     }) => {
         return(
             <div className="book-card" style={{backgroundColor: bgColor}}>
@@ -35,6 +36,10 @@ const BookCard = ({
                     blendMode={blendMode}
                     useShader={useShader}
                     bookCoverMaterial={material}
+                    onLoaded={() => {
+                        console.log(`Book ${containerId} calling onLoaded`); // Debug log
+                        onLoaded();
+                      }}
                 />
 
                 <div className = "book-card-content" style={{"color": textColor}}>
