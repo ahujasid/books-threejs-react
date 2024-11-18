@@ -6,6 +6,8 @@ import './Reset.css';
 import './animatedLink.css';
 import { booksData } from './BooksData';
 import AnimatedHeader from './components/AnimatedHeader';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 
@@ -38,6 +40,8 @@ function App() {
           </div>
         ))}
       </div>
+      <Analytics />
+      <SpeedInsights/>
     </div>
   );
 }

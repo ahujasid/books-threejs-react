@@ -520,7 +520,7 @@ export const FLOWER_SHADER = {
       float getTextMask(vec2 uv) {
         // Position and size of text area
         vec2 textPosition = vec2(0.5, 0.2); // Center x, lower y for bottom placement
-        vec2 textSize = vec2(0.3, 0.2);     // Width and height of text area
+        vec2 textSize = vec2(0.4, 0.2);     // Width and height of text area
         
         vec2 fromCenter = abs(uv - textPosition);
         vec2 maskEdge = smoothstep(textSize * 0.5 - 0.01, textSize * 0.5, fromCenter);

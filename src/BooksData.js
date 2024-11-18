@@ -41,7 +41,7 @@ export const booksData = [
   shaderCode: CRYSTAL_FRACTURE_SHADER,
   useShader: true,
   blending: 'THREE.AdditiveBlending',
-  animationSpeed: 0.02,
+  animationSpeed: 0.05,
   title: 'CODE: The Hidden Lives of Computer Hardware and Software',
   author: 'Charles Petzold',
   review: 'A beautiful exploration of the human spirit and the power of running.'
