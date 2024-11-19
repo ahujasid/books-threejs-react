@@ -20,12 +20,14 @@ body{
   color: #111;
   background-color: white;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 a{
   text-decoration: none;
   color: #E94826;
   width: fit-content;
+  font-size: 18px;
 }
 
 
@@ -50,32 +52,38 @@ h1{
   font-family: 'Pixel';
   font-size: 120px;
   line-height: 108%;
+  letter-spacing: -3%;
 }
 
 h2{
   font-family: 'Pixel';
   font-size: 56px;
-  line-height: 110%;
-  margin-bottom: 56px;
+  line-height: 100%;
+  margin-bottom: 16px;
   font-weight: 400;
+  letter-spacing: -2%;
  
 }
 
 h3{
-  font-size: 21px;
+  font-size: 18px;
   line-height: 100%;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   font-weight: 400;
+  letter-spacing: -4%;
 }
 
 h4{
   font-size: 32px;
   padding-bottom: 32px;
   font-weight: 400;
+  letter-spacing: -7%;
 }
 
 p{
-  font-size: 21px;
+  font-size: 18px;
+  letter-spacing: -5%;
+  line-height: 165%;
 }
 
 .first-fold-links{

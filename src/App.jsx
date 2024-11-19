@@ -42,6 +42,7 @@ function App() {
                 bgColor={book.backgroundColor}
                 material={book.material}
                 textColor={book.textColor}
+                textAccentColor={book.textAccentColor}
                 bookColor={book.bookColor}
                 particleColor={book.particleColor}
                 pngColor={book.pngColor}

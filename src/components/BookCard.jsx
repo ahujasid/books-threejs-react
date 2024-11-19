@@ -9,6 +9,7 @@ const BookCard = ({
     bgColor,
     material,
     textColor,
+    textAccentColor,
     bookColor,
     particleColor,
     pngColor,
@@ -43,8 +44,8 @@ const BookCard = ({
                 />
 
                 <div className = "book-card-content" style={{"color": textColor}}>
-                    <h3>{author}</h3>
                     <h2>{title}</h2>
+                    <h3 style={{"color": textAccentColor}}>{author}</h3>
                     <p>{review}</p>
                 </div>
             </div>
