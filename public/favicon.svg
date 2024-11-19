@@ -1,37 +1,9 @@
 <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_37_331)">
-<g filter="url(#filter0_ii_37_331)">
 <path d="M0 24C0 10.7452 10.7452 0 24 0H97C110.255 0 121 10.7452 121 24V97C121 110.255 110.255 121 97 121H24C10.7452 121 0 110.255 0 97V24Z" fill="#282828"/>
-</g>
-<g filter="url(#filter1_i_37_331)">
 <path d="M49.591 15.8339C43.8665 12.792 32.5843 18.6697 29.3433 23.8442C27.8994 26.1597 28.0016 27.8283 28.0016 28.775V79.4222L70.3103 106L78.2664 101.614V52.2902L34.8265 27.111C37.1576 24.1492 42.4002 20.5375 46.3313 21.9881L85.0238 42.88L85.0239 97.8274L93 93.4339V38.4877L49.591 15.8339Z" fill="white"/>
 </g>
-</g>
 <defs>
-<filter id="filter0_ii_37_331" x="0" y="0" width="121" height="121" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="-6"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_37_331"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="1"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="normal" in2="effect1_innerShadow_37_331" result="effect2_innerShadow_37_331"/>
-</filter>
-<filter id="filter1_i_37_331" x="28" y="15" width="65" height="93" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="3"/>
-<feGaussianBlur stdDeviation="1"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow_37_331"/>
-</filter>
 <clipPath id="clip0_37_331">
 <rect width="121" height="121" fill="white"/>
 </clipPath>

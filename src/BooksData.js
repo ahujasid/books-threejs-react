@@ -105,7 +105,7 @@ export const booksData = [
     },
     textColor: '#AE1634',
     textAccentColor: '#AE1634',
-    bookColor: 0x660e0e,
+    bookColor: 0x500B0B,
     particleColor: 0xf55b76,
     pngColor: 0xff8aab,
     shaderCode: FLOWER_SHADER,
@@ -114,7 +114,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'Flowers For Algernon',
     author: 'DANIEL KEYES',
-    review: 'It’s hard to condense this book’s meaning into a paragraph. It follows Charlie, who goes from having a mental disability to the smartest person in the world. You see how his innocence is replaced by ego. How his naivete is replaced by anxiety. How his past traumas resurface and dictate his new life. How he loses relations and becomes more isolated. The frustration because he can rationalise his emotions, but the conditioning runs to deep to do anything about it. I could draw many parallels with my own life, and it hit like a truck.'
+    review: 'It’s hard to condense this book’s meaning into a paragraph. It follows Charlie, who goes from having a mental disability to the smartest person in the world. You see how his innocence is replaced by ego. How his naivete is replaced by anxiety. How his past traumas resurface and dictate his new life. How he loses relations and becomes more isolated. The frustration because he can rationalise his emotions, but the conditioning runs too deep to do anything about it. I could draw many parallels with my own life. It hit like a truck.'
   },
   {
     id: 'maladies-book',
@@ -137,6 +137,6 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'The Emperor of All Maladies',
     author: 'SIDDHARTHA MUKHERJEE',
-    review: 'Not many people know this, but in 2020 I was diagnosed with a life-changing autoimmune disorder, after which I’ve been engrossed by how the human body works. Emperor of All Maladies describes the history of tackling another, more challenging systemic disease—cancer. While the writing was engaging, what stood out to me was human inventiveness. Without really smart people dedicating their life to curing diseases like mine, I’d have been in a very different place. I finished the book feeling grateful to humans who truly make the world a better place.'
+    review: 'Not many people know this, but in 2020 I was diagnosed with a life-changing autoimmune disorder, after which I’ve been engrossed by how the human body works. Emperor of All Maladies describes the history of tackling another, more challenging systemic disease: cancer. While the writing was engaging, what stood out to me was human inventiveness. Without really smart people dedicating their life to curing diseases like mine, I’d have been in a very different place. I finished the book feeling grateful to humans who truly make the world a better place.'
   }
 ];

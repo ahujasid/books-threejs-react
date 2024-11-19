@@ -462,6 +462,12 @@ const Book = ({
 
       // console.log('About to call onLoaded');
       // console.log('onLoaded exists:', !!onLoaded);
+
+      if (onLoaded) {
+        
+        onLoaded();
+        // console.log('onLoaded called');
+      }
     })
     .catch(error => {
         console.error('Error creating book:', error);

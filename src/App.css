@@ -28,6 +28,7 @@ body{
   background-color: white;
   overflow-x: hidden;
   font-weight: 400;
+  font-size: 18px;
 }
 
 a{
@@ -60,6 +61,7 @@ h1{
   font-size: 120px;
   line-height: 108%;
   letter-spacing: -3%;
+  width: 70%;
 }
 
 h2{
@@ -82,10 +84,11 @@ h3{
 }
 
 h4{
-  font-size: 32px;
+  font-size: 28px;
   padding-bottom: 32px;
   font-weight: 400;
   letter-spacing: -7%;
+  width: 70%;
 }
 
 p{

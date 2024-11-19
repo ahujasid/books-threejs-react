@@ -54,7 +54,7 @@ const AnimatedHeader = () => {
       </h1>
       <h4>
         <AnimatedText 
-          text="Because why the hell not?" 
+          text="I read about 35 books this year. Here are 5 that spoke to me." 
           delay={1000} // Delay the second animation
         />
       </h4>
