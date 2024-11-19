@@ -33,7 +33,7 @@ function App() {
         <AnimatedHeader />
         <div className="books-flex">
           {booksData.map(book => (
-            <div key={book.id} className="book-wrapper">
+            <div key={book.id} className="book-wrapper" style={{backgroundColor: book.backgroundColor}}>
               <BookCard
                 containerId={book.id}
                 frontCoverUrl={book.frontCover}

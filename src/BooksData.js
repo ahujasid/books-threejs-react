@@ -29,13 +29,13 @@ export const booksData = [
     frontCover: frontCover4,
     backCover: backCover4,
     spine: spine4,
-    backgroundColor: '#F3F0EE',
+    backgroundColor: '#F6F3EF',
     material: {
       metalness: 0.6,
       roughness: 0.2
     },
-    textColor: '#146730',
-    textAccentColor: '#146730',
+    textColor: '#0C7C31',
+    textAccentColor: '#0C7C31',
     bookColor: 0x2C4A19,
     particleColor: 0xFF8C00,
     pngColor: 0x90EE90,

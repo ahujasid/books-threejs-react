@@ -35,7 +35,6 @@ a{
   text-decoration: none;
   color: #E94826;
   width: fit-content;
-  font-size: 18px;
 }
 
 
@@ -60,7 +59,7 @@ h1{
   font-family: 'Pixel';
   font-size: 120px;
   line-height: 108%;
-  letter-spacing: -3%;
+  letter-spacing: -1px;
   width: 70%;
 }
 
@@ -93,7 +92,7 @@ h4{
 
 p{
   font-size: 18px;
-  letter-spacing: -5%;
+  letter-spacing: -0.4px;
   line-height: 165%;
 }
 
@@ -114,7 +113,8 @@ p{
 
 .book-wrapper {
   width: 100%;
-  height: 120vh;
+  min-height: 120vh;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -147,22 +147,28 @@ p{
 @media only screen and (max-width: 1200px){
   h1{
     font-size: 108px;
+    width: 80%;
   }
   h2{
-    font-size: 56px;
+    font-size: 48px;
   }
    
   h3{
-    font-size: 24px;
+    font-size: 17px;
 
   }
-  
+
   h4{
-    font-size: 28px;
+    font-size: 24px;
+    width: 80%;
   }
   
   p{
-    font-size: 21px;
+    font-size: 17px;
+  }
+
+  body{
+    font-size: 17px;
   }
   
 
@@ -179,7 +185,7 @@ p{
   }
    
   h3{
-    font-size: 24px;
+    font-size: 18px;
 
   }
   
@@ -188,7 +194,7 @@ p{
   }
   
   p{
-    font-size: 21px;
+    font-size: 18px;
   }
 
   .book-wrapper{
@@ -212,8 +218,8 @@ p{
     justify-content: flex-start;
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 48px;
-    padding-bottom: 80px;
+    padding-top: 32px;
+    padding-bottom: 120px;
     gap: 24px;
   }
 }
@@ -224,18 +230,21 @@ p{
 
   h1{
     font-size: 64px;
+    width: 100%;
   }
+
   h2{
-    font-size: 32px;
+    font-size: 48px;
   }
    
   h3{
-    font-size: 21px;
+    font-size: 18px;
 
   }
   
   h4{
     font-size: 21px;
+    width: 100%;
   }
   
   p{
@@ -248,11 +257,13 @@ p{
     padding-right: 24px;
     padding-bottom: 96px;
     height: auto;
+    min-height: 90vh;
   }
 
   .first-fold-links{
     flex-direction: column;
     gap: 32px;
+    align-items: center;
   }
 
   .book-card-content{
@@ -260,9 +271,24 @@ p{
     padding-right: 24px;
   }
 
-  .book-container{
+  .book-container {
     width: 130vw;
-  }
+    height: 130vw;     
+    position: relative;
+    left: 50%;
+    top: 50%;         
+    transform: translate(-50%, -50%); 
+}
+    
+
+  .canvas-wrapper {
+    width: 90vw;
+    height: 108vw;
+    overflow: hidden;  /* This will clip the content */
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+    overflow: visible;
+}
 
 }
 
