@@ -12,6 +12,13 @@
 @font-face {
   font-family: 'Mono';
   src: url(./assets/fonts/Mono.ttf);
+  font-weight: 400;
+}
+
+@font-face{
+  font-family: 'Mono Medium';
+  src: url(./assets/fonts/Mono-Medium.ttf);
+  font-weight: 500;
 }
 
 
@@ -59,7 +66,7 @@ h2{
   font-family: 'Pixel';
   font-size: 56px;
   line-height: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   font-weight: 400;
   letter-spacing: -2%;
  
@@ -67,9 +74,10 @@ h2{
 
 h3{
   font-size: 18px;
+  font-family: 'Mono Medium';
   line-height: 100%;
   margin-bottom: 32px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -4%;
 }
 
@@ -117,12 +125,12 @@ p{
   height: 100%;
   justify-content: flex-start;
   align-items: center;
-  padding-right: 48px;
+  padding-right: 8%;
 
 }
 
 .book-card-content{
-  width: calc(50% - 48px);
+  width: 45%;
 }
 
 .book-container {

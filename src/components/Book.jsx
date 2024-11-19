@@ -285,7 +285,7 @@ const Book = ({
         loadTexture(spineUrl),
         loadTexture(backCoverUrl)
       ]).then(([coverTextTexture, spineTexture, backTextTexture]) => {
-        console.log('Textures loaded successfully');
+        // console.log('Textures loaded successfully');
         // Create pages
         const pagesGeometry = createRoundedBoxGeometry(width - 0.1, height - 0.1, depth, cornerRadius);
         const pagesMaterial = Array(6).fill().map(() => new THREE.MeshStandardMaterial({
@@ -460,27 +460,20 @@ const Book = ({
 
       scene.add(book);
 
-      console.log('About to call onLoaded');
-      console.log('onLoaded exists:', !!onLoaded);
-     
-      if (onLoaded) {
-        
-        onLoaded();
-        console.log('onLoaded called');
-      }
+      // console.log('About to call onLoaded');
+      // console.log('onLoaded exists:', !!onLoaded);
     })
     .catch(error => {
         console.error('Error creating book:', error);
-        if (onLoaded) {
-          console.log('onLoaded called (from error)');;
-        }
       });
 
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
-      particleShaderMaterial.uniforms.time.value += animationSpeed;
+      if(useShader){
+        particleShaderMaterial.uniforms.time.value += animationSpeed;
+      }
       renderer.render(scene, camera);
     }
     animate();
