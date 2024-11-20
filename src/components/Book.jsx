@@ -41,7 +41,7 @@ const Book = ({
       else{
         if(!isMobile){
           animationTime += 0.07;
-          bookContainerRef.rotation.y = Math.PI * 0.05 + Math.sin(animationTime * 0.5) * 0.07;
+          bookContainerRef.rotation.y = Math.PI * 0.05 + Math.sin(animationTime * 0.5) * 0.05;
           bookContainerRef.position.y = Math.sin(animationTime * 0.7) * 0.07;
         }
         else{
