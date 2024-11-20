@@ -226,7 +226,6 @@ p{
 }
 
 
-
 @media only screen and (max-width: 768px) {
 
   h1{
@@ -258,7 +257,7 @@ p{
     padding-right: 24px;
     padding-bottom: 96px;
     height: auto;
-    min-height: 90vh;
+    min-height: 80vh;
   }
 
   .first-fold-links{
