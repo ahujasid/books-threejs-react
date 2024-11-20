@@ -599,7 +599,7 @@ const Book = ({
           const timeElapsed = currentTime - lastTime;
           const delta = (touchX - touchStartX) * 0.003;
           
-          velocity = (delta / timeElapsed) * 1.5;
+          velocity = (delta / timeElapsed) * 2;
           currentRotation += delta;
           bookContainerRef.rotation.y = currentRotation;
           // Reset position.y to prevent interference with touch movement
