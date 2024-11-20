@@ -185,7 +185,7 @@ p{
   }
    
   h3{
-    font-size: 18px;
+    font-size: 17px;
 
   }
   
@@ -194,7 +194,7 @@ p{
   }
   
   p{
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .book-wrapper{
@@ -211,6 +211,7 @@ p{
     padding-left: 48px;
     padding-right: 48px;
   }
+
 
 
   .book-card{
@@ -238,7 +239,7 @@ p{
   }
    
   h3{
-    font-size: 18px;
+    font-size: 16px;
 
   }
   
@@ -248,7 +249,7 @@ p{
   }
   
   p{
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .first-fold{
@@ -267,28 +268,14 @@ p{
   }
 
   .book-card-content{
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .book-container {
     width: 130vw;
-    height: 130vw;     
-    position: relative;
-    left: 50%;
-    top: 50%;         
-    transform: translate(-50%, -50%); 
 }
     
-
-  .canvas-wrapper {
-    width: 90vw;
-    height: 108vw;
-    overflow: hidden;  /* This will clip the content */
-    margin-top: 10vw;
-    margin-bottom: 10vw;
-    overflow: visible;
-}
 
 }
 

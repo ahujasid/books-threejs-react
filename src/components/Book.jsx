@@ -94,6 +94,37 @@ const Book = ({
     controls.enableDamping = true; // Keep damping for smooth movement
     controls.dampingFactor = 0.05;
 
+
+    console.log("Controls created:", controls);
+    
+
+    // Check if device is mobile
+    // const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+    const isMobile = window.innerWidth < 768; // Common mobile breakpoint
+
+    if (isMobile) {
+      controls.enabled = false;
+    } else {
+      let prevX = 0;
+      let prevY = 0;
+      
+      renderer.domElement.addEventListener('mousemove', (e) => {
+        if (controls.enabled) {  // Removed ! to work when controls enabled
+          const deltaX = (e.clientX - prevX) * 0.002;  // Increased from 0.001
+          const deltaY = (e.clientY - prevY) * 0.002;  // Increased from 0.001
+          
+          // Inverted movement by changing + to - and - to +
+          camera.position.x -= deltaX;
+          camera.position.y += deltaY;
+          camera.lookAt(controls.target);
+        }
+        prevX = e.clientX;
+        prevY = e.clientY;
+      });
+     }
+     
+    
+
     controls.target.set(0, 0, 0);
     controls.update();
 
@@ -453,12 +484,43 @@ const Book = ({
       if(useShader) 
         {book.add(particleOverlay);}
 
+      // Create a container for the book that will handle the tilt
+      const bookContainer = new THREE.Group();
+      bookContainer.add(book);
+      scene.add(bookContainer);
+      
       // Set initial rotation
-      book.rotation.x = Math.PI * -0.15;
-      book.rotation.y = Math.PI * 0.1;
-      book.rotation.z = Math.PI * 0.05;
+      bookContainer.rotation.x = Math.PI * -0.15;
+      bookContainer.rotation.z = Math.PI * 0.05;
 
-      scene.add(book);
+      book.rotation.y = Math.PI * 0.1;
+
+      // scene.add(book);
+
+
+      
+      let touchStartX = 0;
+      let currentRotation = 0;
+
+      if (isMobile) {
+        controls.enabled = false;
+        
+        let touchStartX = 0;
+        let currentRotation = Math.PI * 0.1; // Initial Y rotation
+
+        containerRef.current.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        });
+
+        containerRef.current.addEventListener('touchmove', (e) => {
+          const touchX = e.touches[0].clientX;
+          const delta = (touchX - touchStartX) * 0.01;
+          currentRotation += delta;
+          book.rotation.y = currentRotation; // Rotate only the book, not the container
+          touchStartX = touchX;
+        });
+      }
+
 
       // console.log('About to call onLoaded');
       // console.log('onLoaded exists:', !!onLoaded);
@@ -476,7 +538,9 @@ const Book = ({
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
-      controls.update();
+      if (!isMobile) {
+        controls.update();
+      }
       if(useShader){
         particleShaderMaterial.uniforms.time.value += animationSpeed;
       }

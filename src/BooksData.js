@@ -81,7 +81,7 @@ export const booksData = [
       roughness: 1
     },
     textColor: '#222',
-    textAccentColor: '#787029',
+    textAccentColor: '#222',
     bookColor: 0x916d53,
     particleColor: 0x010101,
     pngColor: 0x000000,
@@ -126,8 +126,8 @@ export const booksData = [
       metalness: 1,
       roughness: 0.2
     },
-    textColor: '#3B2414',
-    textAccentColor: '#3B2414',
+    textColor: '#B8690E',
+    textAccentColor: '#B8690E',
     bookColor: 0x3d210f,
     particleColor: 0xFF9B69,
     pngColor: 0xFF9B69,

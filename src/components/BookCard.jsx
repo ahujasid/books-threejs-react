@@ -24,7 +24,7 @@ const BookCard = ({
     }) => {
         return(
             <div className="book-card">
-                <div className="canvas-wrapper">
+
                     <Book
                         containerId={containerId}
                         frontCoverUrl={frontCoverUrl}
@@ -43,7 +43,6 @@ const BookCard = ({
                             onLoaded();
                         }}
                     />
-                </div>
 
                 <div className = "book-card-content" style={{"color": textColor}}>
                     <h3 style={{"color": textAccentColor}}>{author}</h3>
