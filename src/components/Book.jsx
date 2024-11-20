@@ -583,14 +583,11 @@ const Book = ({
       
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
-
           const touchY = e.touches[0].clientY;
           const deltaX = touchX - touchStartX;
 
           // console.log('touchmove');
 
-          // console.log('deltax: ', Math.abs(deltaX));
-          // console.log('deltay: ', Math.abs(touchY - touchStartY));
           
           if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10)  {
             e.preventDefault();
@@ -602,7 +599,7 @@ const Book = ({
           const timeElapsed = currentTime - lastTime;
           const delta = (touchX - touchStartX) * 0.003;
           
-          velocity = delta / timeElapsed;
+          velocity = (delta / timeElapsed) * 1.5;
           currentRotation += delta;
           bookContainerRef.rotation.y = currentRotation;
           // Reset position.y to prevent interference with touch movement
@@ -613,7 +610,7 @@ const Book = ({
         }, { passive: false });
       
         containerRef.current.addEventListener('touchend', () => {
-          isDragging = false;
+          
           if (Math.abs(velocity) > 0.0001) {
             isInertiaActive = true;
             animationTime = 0; // Reset animation time
@@ -626,6 +623,7 @@ const Book = ({
               if (Math.abs(velocity) <= 0.0005) {
                 clearInterval(applyInertia);
                 isInertiaActive = false;
+                isDragging = false;
                 animationTime = 0; // Reset animation time for smooth transition to float
               }
             }, 16);
