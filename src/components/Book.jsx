@@ -27,17 +27,26 @@ const Book = ({
     //Global variables
     let bookContainerRef = null;
     let animationTime = 0;
-    let isOrbiting = false;
-    let animationTimeoutId = null;
-    let hoverEffect = false;
-    let isDragging = false;
-    let isInertiaActive = false;
+    let targetRotation = 0;
     let currentRotation = Math.PI * 0.1;
-    let velocity = 0;
-    let lastTime = 0;
+    let isAnimating = false;
+    let isOrbiting = false;
+
+    // Simple dampened animation function
+    function updateBookRotation() {
+      if (Math.abs(targetRotation - currentRotation) > 0.001) {
+        const rotationFactor = 0.06;
+        currentRotation += (targetRotation - currentRotation) * rotationFactor;
+        if (bookContainerRef) {
+          bookContainerRef.rotation.y = currentRotation;
+        }
+        return true;
+      }
+      return false;
+    }
 
     function animateBook(){
-      if (!bookContainerRef) return;
+      if (!bookContainerRef || isAnimating) return;
       else{
         if(!isMobile){
           animationTime += 0.07;
@@ -169,27 +178,7 @@ const Book = ({
 
     if (isMobile) {
       controls.enabled = false;
-    } else {
-      let prevX = 0;
-      let prevY = 0;
-
-      if(hoverEffect){
-        renderer.domElement.addEventListener('mousemove', (e) => {
-          if (controls.enabled) {  // Removed ! to work when controls enabled
-            const deltaX = (e.clientX - prevX) * 0.002;  // Increased from 0.001
-            const deltaY = (e.clientY - prevY) * 0.002;  // Increased from 0.001
-            
-            // Inverted movement by changing + to - and - to +
-            camera.position.x -= deltaX;
-            camera.position.y += deltaY;
-            camera.lookAt(controls.target);
-          }
-          prevX = e.clientX;
-          prevY = e.clientY;
-        });
-      }
-     }
-     
+    } 
     
 
     controls.target.set(0, 0, 0);
@@ -571,72 +560,43 @@ const Book = ({
         
         let touchStartX = 0;
         let touchStartY = 0;
-      
+        
         containerRef.current.addEventListener('touchstart', (e) => {
           touchStartX = e.touches[0].clientX;
           touchStartY = e.touches[0].clientY;
-          lastTime = Date.now();
-          isInertiaActive = false;
-          // Store current rotation to prevent jumping
-          // currentRotation = bookContainerRef.rotation.y;
-        },{ passive: false });
-      
+          // console.log("touchstart");
+          // isAnimating = true;
+        }, { passive: true });
+  
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
           const touchY = e.touches[0].clientY;
           const deltaX = touchX - touchStartX;
-
-          // console.log('touchmove');
-
+          // console.log("touchmove");
           
-          if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10)  {
-            e.preventDefault();
-            // console.log('is dragging');
-            isDragging = true;
+          // Only respond to significant horizontal movement
+          if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) 
+          // if(Math.abs(deltaX) > 10) 
+            {
+              e.preventDefault();
+              isAnimating = true;
+              // console.log("called");
+              const rotationSpeed = 0.1;
+              const rotationDelta = (deltaX * rotationSpeed);
+              targetRotation = currentRotation + rotationDelta;
+              touchStartX = touchX;
+              touchStartY = touchY;
           }
-      
-          const currentTime = Date.now();
-          const timeElapsed = currentTime - lastTime;
-          const delta = (touchX - touchStartX) * 0.003;
-          
-          velocity = (delta / timeElapsed) * 2;
-          currentRotation += delta;
-          bookContainerRef.rotation.y = currentRotation;
-          // Reset position.y to prevent interference with touch movement
-          bookContainerRef.position.y = 0;
-          
-          touchStartX = touchX;
-          lastTime = currentTime;
         }, { passive: false });
-      
+  
         containerRef.current.addEventListener('touchend', () => {
-          
-          if (Math.abs(velocity) > 0.0001) {
-            isInertiaActive = true;
-            animationTime = 0; // Reset animation time
-            const applyInertia = setInterval(() => {
-              velocity *= 0.95;
-              currentRotation += velocity * 16;
-              bookContainerRef.rotation.y = currentRotation;
-              bookContainerRef.position.y = 0; // Keep position stable during inertia
-              
-              if (Math.abs(velocity) <= 0.0005) {
-                clearInterval(applyInertia);
-                isInertiaActive = false;
-                isDragging = false;
-                animationTime = 0; // Reset animation time for smooth transition to float
-              }
-            }, 16);
-          } else {
-            animationTime = 0; // Reset animation time for smooth transition to float
-          }
-        });
+          // Add small inertia effect
+          setTimeout(() => {
+            isAnimating = false;
+            animationTime = 0;
+          }, 500);
+        }, { passive: true });
       }
-
-
-      // console.log('About to call onLoaded');
-      // console.log('onLoaded exists:', !!onLoaded);
-
       if (onLoaded) {
         
         onLoaded();
@@ -650,16 +610,21 @@ const Book = ({
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
+      
       if (isOrbiting) {
         controls.update();
-      }
-      else if (!isDragging && !isInertiaActive && bookContainerRef) {
-        animateBook();
+      } else {
+        const isRotating = updateBookRotation();
+        
+        if (!isRotating && !isAnimating && bookContainerRef) {
+          animateBook();
+        }
       }
       
-      if(useShader){
+      if (useShader) {
         particleShaderMaterial.uniforms.time.value += animationSpeed;
       }
+      
       renderer.render(scene, camera);
     }
     animate();
