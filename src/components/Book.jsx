@@ -568,7 +568,7 @@ const Book = ({
           const deltaX = Math.abs(touchX - touchStartX);
           
 
-          if (deltaX > 5) {  // Only prevent scroll if clear horizontal movement
+          if (deltaX > 10) {  // Only prevent scroll if clear horizontal movement
             e.preventDefault();
           }
           const delta = (touchX - touchStartX) * 0.01;
