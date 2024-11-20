@@ -589,12 +589,15 @@ const Book = ({
               touchStartX = touchX;
               touchStartY = touchY;
           }
+
+          isAnimating = false;
+          animationTime = 0;
         }, { passive: false });
   
         containerRef.current.addEventListener('touchend', () => {
           // Add small inertia effect
-            isAnimating = false;
-            animationTime = 0;
+            
+     
         }, { passive: true });
       }
       if (onLoaded) {
