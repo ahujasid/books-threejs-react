@@ -27,11 +27,13 @@ const Book = ({
     //Global variables
     let bookContainerRef = null;
     let animationTime = 0;
-    let targetRotation = 0;
+    let targetRotation = Math.PI * 0.1;
     let currentRotation = Math.PI * 0.1;
     let isAnimating = false;
     let isOrbiting = false;
     let animationTimeoutId = null;
+    
+    
 
 
     // Simple dampened animation function
