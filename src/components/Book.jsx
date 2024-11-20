@@ -134,7 +134,25 @@ const Book = ({
 
     // Check if device is mobile
     // const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
-    const isMobile = window.innerWidth < 768; // Common mobile breakpoint
+    // const isMobile = window.innerWidth < 768; 
+    const isMobileCheck = () => {
+      const hasTouchCapability = (
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0
+      );
+      
+      return hasTouchCapability && window.innerWidth < 1200;
+    };
+    
+    // If you need a constant instead of a function:
+    const isMobile = isMobileCheck();
+
+    window.addEventListener('resize', () => {
+      Object.defineProperty(window, 'IS_MOBILE', {
+        value: isMobileCheck(),
+        writable: true
+      });
+    });
 
     if (isMobile) {
       controls.enabled = false;
