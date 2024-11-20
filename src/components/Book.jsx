@@ -565,11 +565,18 @@ const Book = ({
 
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
+          const deltaX = Math.abs(touchX - touchStartX);
+          
+
+          if (deltaX > 5) {  // Only prevent scroll if clear horizontal movement
+            e.preventDefault();
+          }
           const delta = (touchX - touchStartX) * 0.01;
           currentRotation += delta;
           book.rotation.y = currentRotation; // Rotate only the book, not the container
           touchStartX = touchX;
-        });
+        }, { passive: false });
+
       }
 
 
