@@ -590,7 +590,7 @@ const Book = ({
       
           const currentTime = Date.now();
           const timeElapsed = currentTime - lastTime;
-          const delta = (touchX - touchStartX) * 0.01;
+          const delta = (touchX - touchStartX) * 0.003;
           
           velocity = delta / timeElapsed;
           currentRotation += delta;
