@@ -584,7 +584,7 @@ const Book = ({
           const touchX = e.touches[0].clientX;
           const deltaX = Math.abs(touchX - touchStartX);
           
-          if (deltaX > 10) {
+          if (deltaX > 20) {
             e.preventDefault();
           }
       
