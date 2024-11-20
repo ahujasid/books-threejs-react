@@ -574,19 +574,26 @@ const Book = ({
       
         containerRef.current.addEventListener('touchstart', (e) => {
           touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
           lastTime = Date.now();
           isInertiaActive = false;
           // Store current rotation to prevent jumping
-          currentRotation = bookContainerRef.rotation.y;
+          // currentRotation = bookContainerRef.rotation.y;
         },{ passive: false });
       
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
-          const deltaX = Math.abs(touchX - touchStartX);
           const touchY = e.touches[0].clientY;
+          const deltaX = touchX - touchStartX;
+
+          // console.log('touchmove');
+
+          console.log('deltax: ', Math.abs(deltaX));
+          console.log('deltay: ', Math.abs(touchY - touchStartY));
           
           if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10)  {
             e.preventDefault();
+            console.log('is dragging');
             isDragging = true;
           }
       
