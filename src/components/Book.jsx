@@ -30,13 +30,21 @@ const Book = ({
     let isOrbiting = false;
     let animationTimeoutId = null;
     let hoverEffect = false;
+    let isDragging = false;
 
     function animateBook(){
       if (!bookContainerRef) return;
       else{
-        animationTime += 0.05;
-        bookContainerRef.rotation.y = Math.PI * 0.05 + Math.sin(animationTime * 0.5) * 0.05;
-        bookContainerRef.position.y = Math.sin(animationTime * 0.7) * 0.05;
+        if(!isMobile){
+          animationTime += 0.05;
+          bookContainerRef.rotation.y = Math.PI * 0.05 + Math.sin(animationTime * 0.5) * 0.05;
+          bookContainerRef.position.y = Math.sin(animationTime * 0.7) * 0.05;
+        }
+        else{
+          animationTime += 0.08;
+          bookContainerRef.rotation.y = Math.PI * 0.1 + Math.sin(animationTime * 0.5) * 0.1;
+          bookContainerRef.position.y = Math.sin(animationTime * 0.8) * 0.1;
+        }
       }
     }
     
@@ -557,26 +565,52 @@ const Book = ({
         controls.enabled = false;
         
         let touchStartX = 0;
-        let currentRotation = Math.PI * 0.1; // Initial Y rotation
-
+        let currentRotation = Math.PI * 0.1;
+        let velocity = 0;
+        let lastTime = 0;
+        let isDragging = false;
+  
         containerRef.current.addEventListener('touchstart', (e) => {
           touchStartX = e.touches[0].clientX;
+          lastTime = Date.now();
+          isDragging = true;
+          velocity = 0;
         });
-
+  
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
           const deltaX = Math.abs(touchX - touchStartX);
           
-
-          if (deltaX > 10) {  // Only prevent scroll if clear horizontal movement
+          if (deltaX > 10) {
             e.preventDefault();
           }
+  
+          const currentTime = Date.now();
+          const timeElapsed = currentTime - lastTime;
           const delta = (touchX - touchStartX) * 0.01;
+          
+          velocity = delta / timeElapsed;
           currentRotation += delta;
-          book.rotation.y = currentRotation; // Rotate only the book, not the container
+          book.rotation.y = currentRotation;
+          
           touchStartX = touchX;
+          lastTime = currentTime;
         }, { passive: false });
-
+  
+        containerRef.current.addEventListener('touchend', () => {
+          isDragging = false;
+        });
+  
+        // Add inertia handling to the animation loop
+        const originalAnimate = animate;
+        animate = function() {
+          if (!isDragging && Math.abs(velocity) > 0.0001) {
+            velocity *= 0.95; // Decay factor
+            currentRotation += velocity * 16; // Assuming ~60fps (16ms)
+            book.rotation.y = currentRotation;
+          }
+          originalAnimate();
+        }
       }
 
 
