@@ -35,7 +35,7 @@ const Book = ({
     // Simple dampened animation function
     function updateBookRotation() {
       if (Math.abs(targetRotation - currentRotation) > 0.001) {
-        const rotationFactor = 0.1;
+        const rotationFactor = 0.03;
         currentRotation += (targetRotation - currentRotation) * rotationFactor;
         if (bookContainerRef) {
           bookContainerRef.rotation.y = currentRotation;
