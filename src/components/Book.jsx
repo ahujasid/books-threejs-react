@@ -22,6 +22,23 @@ const Book = ({
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+
+    //Global variables
+    let bookContainerRef = null;
+    let animationTime = 0;
+    let isOrbiting = false;
+    let animationTimeoutId = null;
+    let hoverEffect = false;
+
+    function animateBook(){
+      if (!bookContainerRef) return;
+      else{
+        animationTime += 0.05;
+        bookContainerRef.rotation.y = Math.PI * 0.05 + Math.sin(animationTime * 0.5) * 0.05;
+        bookContainerRef.position.y = Math.sin(animationTime * 0.7) * 0.05;
+      }
+    }
     
     // Scene setup
     const scene = new THREE.Scene();
@@ -95,7 +112,24 @@ const Book = ({
     controls.dampingFactor = 0.05;
 
 
-    console.log("Controls created:", controls);
+    // Add event listeners right after controls setup
+  controls.addEventListener('start', () => {
+    isOrbiting = true;
+    if (bookContainerRef) {
+      bookContainerRef.position.y = 0;
+      bookContainerRef.rotation.y = Math.PI * 0.05;
+    }
+  });
+
+  controls.addEventListener('end', () => {
+    if (animationTimeoutId) {
+      clearTimeout(animationTimeoutId);
+    }
+    animationTimeoutId = setTimeout(() => {
+      isOrbiting = false;
+      animationTime = 0;
+    }, 1000);
+  });
     
 
     // Check if device is mobile
@@ -107,20 +141,22 @@ const Book = ({
     } else {
       let prevX = 0;
       let prevY = 0;
-      
-      renderer.domElement.addEventListener('mousemove', (e) => {
-        if (controls.enabled) {  // Removed ! to work when controls enabled
-          const deltaX = (e.clientX - prevX) * 0.002;  // Increased from 0.001
-          const deltaY = (e.clientY - prevY) * 0.002;  // Increased from 0.001
-          
-          // Inverted movement by changing + to - and - to +
-          camera.position.x -= deltaX;
-          camera.position.y += deltaY;
-          camera.lookAt(controls.target);
-        }
-        prevX = e.clientX;
-        prevY = e.clientY;
-      });
+
+      if(hoverEffect){
+        renderer.domElement.addEventListener('mousemove', (e) => {
+          if (controls.enabled) {  // Removed ! to work when controls enabled
+            const deltaX = (e.clientX - prevX) * 0.002;  // Increased from 0.001
+            const deltaY = (e.clientY - prevY) * 0.002;  // Increased from 0.001
+            
+            // Inverted movement by changing + to - and - to +
+            camera.position.x -= deltaX;
+            camera.position.y += deltaY;
+            camera.lookAt(controls.target);
+          }
+          prevX = e.clientX;
+          prevY = e.clientY;
+        });
+      }
      }
      
     
@@ -488,19 +524,16 @@ const Book = ({
       const bookContainer = new THREE.Group();
       bookContainer.add(book);
       scene.add(bookContainer);
+
+      bookContainerRef = bookContainer;
       
       // Set initial rotation
       bookContainer.rotation.x = Math.PI * -0.15;
       bookContainer.rotation.z = Math.PI * 0.05;
-
       book.rotation.y = Math.PI * 0.1;
 
       // scene.add(book);
 
-
-      
-      let touchStartX = 0;
-      let currentRotation = 0;
 
       if (isMobile) {
         controls.enabled = false;
@@ -538,9 +571,13 @@ const Book = ({
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
-      if (!isMobile) {
+      if (isOrbiting) {
         controls.update();
       }
+      else if (bookContainerRef) {
+        animateBook();
+      }
+      
       if(useShader){
         particleShaderMaterial.uniforms.time.value += animationSpeed;
       }
