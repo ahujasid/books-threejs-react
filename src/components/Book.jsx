@@ -573,7 +573,8 @@ const Book = ({
           
           // Only respond to significant horizontal movement
           if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) {
-            const rotationDelta = (deltaX * 0.01);
+            const rotationSpeed = 0.05;
+            const rotationDelta = (deltaX * rotationSpeed);
             targetRotation = currentRotation + rotationDelta;
             touchStartX = touchX;
             touchStartY = touchY;
