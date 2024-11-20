@@ -578,13 +578,13 @@ const Book = ({
           isInertiaActive = false;
           // Store current rotation to prevent jumping
           currentRotation = bookContainerRef.rotation.y;
-        });
+        },{ passive: false });
       
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
           const deltaX = Math.abs(touchX - touchStartX);
           
-          if (deltaX > 15) {
+          if (deltaX > 10) {
             e.preventDefault();
           }
       
