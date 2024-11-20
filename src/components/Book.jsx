@@ -575,8 +575,8 @@ const Book = ({
           // console.log("touchmove");
           
           // Only respond to significant horizontal movement
-          // if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) 
-          if(Math.abs(deltaX) > 10) 
+          if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) 
+          // if(Math.abs(deltaX) > 10) 
             {
               e.preventDefault();
               isAnimating = true;
