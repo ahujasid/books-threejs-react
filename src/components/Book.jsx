@@ -564,23 +564,29 @@ const Book = ({
         containerRef.current.addEventListener('touchstart', (e) => {
           touchStartX = e.touches[0].clientX;
           touchStartY = e.touches[0].clientY;
-          isAnimating = true;
+          console.log("touchstart");
+          // isAnimating = true;
         }, { passive: true });
   
         containerRef.current.addEventListener('touchmove', (e) => {
           const touchX = e.touches[0].clientX;
           const touchY = e.touches[0].clientY;
           const deltaX = touchX - touchStartX;
+          isAnimating = true;
+          console.log("touchmove");
           
           // Only respond to significant horizontal movement
-          if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) {
+          if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) 
+            {
+            e.preventDefault();
+            console.log("called");
             const rotationSpeed = 0.04;
             const rotationDelta = (deltaX * rotationSpeed);
             targetRotation = currentRotation + rotationDelta;
             touchStartX = touchX;
             touchStartY = touchY;
           }
-        }, { passive: true });
+        }, { passive: false });
   
         containerRef.current.addEventListener('touchend', () => {
           // Add small inertia effect
