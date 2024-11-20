@@ -35,7 +35,7 @@ const Book = ({
     // Simple dampened animation function
     function updateBookRotation() {
       if (Math.abs(targetRotation - currentRotation) > 0.001) {
-        const rotationFactor = 0.25;
+        const rotationFactor = 0.1;
         currentRotation += (targetRotation - currentRotation) * rotationFactor;
         if (bookContainerRef) {
           bookContainerRef.rotation.y = currentRotation;
@@ -581,7 +581,7 @@ const Book = ({
               e.preventDefault();
               isAnimating = true;
               // console.log("called");
-              const rotationSpeed = 0.04;
+              const rotationSpeed = 0.1;
               const rotationDelta = (deltaX * rotationSpeed);
               targetRotation = currentRotation + rotationDelta;
               touchStartX = touchX;
