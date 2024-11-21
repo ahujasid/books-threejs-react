@@ -32,6 +32,7 @@ const Book = ({
     let isAnimating = false;
     let isOrbiting = false;
     let animationTimeoutId = null;
+    let lastAzimuthalAngle = 0;
     
     
 
@@ -137,25 +138,39 @@ const Book = ({
     controls.enableDamping = true; // Keep damping for smooth movement
     controls.dampingFactor = 0.05;
 
+  
+    controls.addEventListener('start', () => {
+      if (animationTimeoutId) {
+        clearTimeout(animationTimeoutId);
+      }
+      isOrbiting = true;
+      if (bookContainerRef) {
+        bookContainerRef.position.y = 0;
+        bookContainerRef.rotation.y = Math.PI * 0.05;
+      }
+      lastAzimuthalAngle = controls.getAzimuthalAngle();
+    });
 
-    // Add event listeners right after controls setup
-  controls.addEventListener('start', () => {
-    isOrbiting = true;
-    if (bookContainerRef) {
-      bookContainerRef.position.y = 0;
-      bookContainerRef.rotation.y = Math.PI * 0.05;
-    }
-  });
+    controls.addEventListener('end', () => {
+      const checkRotationStopped = () => {
+        const currentAzimuthalAngle = controls.getAzimuthalAngle();
+        const deltaAngle = Math.abs(currentAzimuthalAngle - lastAzimuthalAngle);
+        
+        if (deltaAngle < 0.0001) {
+          isOrbiting = false;
+          animationTime = 0;
+          if (bookContainerRef) {
+            bookContainerRef.rotation.y = Math.PI * 0.05;
+          }
+        } else {
+          lastAzimuthalAngle = currentAzimuthalAngle;
+          animationTimeoutId = setTimeout(checkRotationStopped, 100);
+        }
+      };
 
-  controls.addEventListener('end', () => {
-    if (animationTimeoutId) {
-      clearTimeout(animationTimeoutId);
-    }
-    animationTimeoutId = setTimeout(() => {
-      isOrbiting = false;
-      animationTime = 0;
-    }, 1000);
-  });
+      // Start checking after initial delay
+      animationTimeoutId = setTimeout(checkRotationStopped, 100);
+    });
     
 
     // Check if device is mobile
@@ -622,7 +637,7 @@ const Book = ({
       else {
         const isRotating = updateBookRotation();
         
-        if (!isAnimating && bookContainerRef) {
+        if (!isOrbiting && !isAnimating && bookContainerRef) {
           animateBook();
         }
       }

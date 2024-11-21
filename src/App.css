@@ -141,17 +141,16 @@ p{
   height: auto;
   min-height: 800px;
   aspect-ratio: 1;
-  cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -moz-grab;
   cursor: -webkit-grab;
 }
 
-/* .book-container :active{
+.book-container :active{
   cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
-} */
+}
 
 
 @media only screen and (max-width: 1200px){
