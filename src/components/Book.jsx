@@ -582,23 +582,23 @@ const Book = ({
           if (Math.abs(deltaX) > Math.abs(touchY - touchStartY) && Math.abs(deltaX) > 10) 
           // if(Math.abs(deltaX) > 10) 
             {
+              console.log('delta crossed');
               e.preventDefault();
               isAnimating = true;
-              // console.log("called");
+         
               const rotationSpeed = 0.1;
               const rotationDelta = (deltaX * rotationSpeed);
               targetRotation = currentRotation + rotationDelta;
               touchStartX = touchX;
               touchStartY = touchY;
           }
-
-          isAnimating = false;
-          animationTime = 0;
+        
         }, { passive: false });
   
         containerRef.current.addEventListener('touchend', () => {
-          // Add small inertia effect
-            
+      
+          isAnimating = false;
+          // animationTime = 0;
      
         }, { passive: true });
       }
@@ -618,10 +618,11 @@ const Book = ({
       
       if (isOrbiting) {
         controls.update();
-      } else {
+      } 
+      else {
         const isRotating = updateBookRotation();
         
-        if (!isRotating && !isAnimating && bookContainerRef) {
+        if (!isAnimating && bookContainerRef) {
           animateBook();
         }
       }
