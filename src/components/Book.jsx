@@ -622,7 +622,7 @@ const Book = ({
       else {
         const isRotating = updateBookRotation();
         
-        if (!isRotating && !isAnimating && bookContainerRef) {
+        if (!isAnimating && bookContainerRef) {
           animateBook();
         }
       }
