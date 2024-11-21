@@ -156,7 +156,7 @@ const Book = ({
         const currentAzimuthalAngle = controls.getAzimuthalAngle();
         const deltaAngle = Math.abs(currentAzimuthalAngle - lastAzimuthalAngle);
         
-        if (deltaAngle < 0.0001) {
+        if (deltaAngle < 0.005) {
           isOrbiting = false;
           animationTime = 0;
           if (bookContainerRef) {
