@@ -483,76 +483,76 @@ export const FLOWER_SHADER = {
     `
 };
   
-  export const CRYSTAL_FRACTURE_SHADER = {
-    vertexShader: `
-      varying vec2 vUv;
-      void main() {
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      uniform float time;
-      uniform vec3 color;
-      varying vec2 vUv;
-  
-      float voronoi(vec2 x) {
-        vec2 n = floor(x);
-        vec2 f = fract(x);
-  
-        float m = 8.0;
-        for(int j = -1; j <= 1; j++) {
-          for(int i = -1; i <= 1; i++) {
-            vec2 g = vec2(float(i), float(j));
-            vec2 o = vec2(
-              sin(time * 0.2 + dot(n + g, vec2(13.0, 7.0))),
-              cos(time * 0.2 + dot(n + g, vec2(7.0, 13.0)))
-            ) * 0.5 + 0.5;
-            vec2 r = g + o - f;
-            float d = dot(r, r);
-            m = min(m, d);
-          }
+export const CRYSTAL_FRACTURE_SHADER = {
+  vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform float time;
+    uniform vec3 color;
+    varying vec2 vUv;
+
+    float voronoi(vec2 x) {
+      vec2 n = floor(x);
+      vec2 f = fract(x);
+
+      float m = 8.0;
+      for(int j = -1; j <= 1; j++) {
+        for(int i = -1; i <= 1; i++) {
+          vec2 g = vec2(float(i), float(j));
+          vec2 o = vec2(
+            sin(time * 0.2 + dot(n + g, vec2(13.0, 7.0))),
+            cos(time * 0.2 + dot(n + g, vec2(7.0, 13.0)))
+          ) * 0.5 + 0.5;
+          vec2 r = g + o - f;
+          float d = dot(r, r);
+          m = min(m, d);
         }
-        return sqrt(m);
       }
-  
-      // Function to create text area mask
-      float getTextMask(vec2 uv) {
-        // Position and size of text area
-        vec2 textPosition = vec2(0.5, 0.2); // Center x, lower y for bottom placement
-        vec2 textSize = vec2(0.4, 0.2);     // Width and height of text area
-        
-        vec2 fromCenter = abs(uv - textPosition);
-        vec2 maskEdge = smoothstep(textSize * 0.5 - 0.01, textSize * 0.5, fromCenter);
-        
-        return 1.0 - (1.0 - maskEdge.x) * (1.0 - maskEdge.y);
-      }
-  
-      void main() {
-        // Create crystalline structure
-        float v1 = voronoi(vUv * 5.0);
-        float v2 = voronoi(vUv * 8.0 + time * 0.2);
-        
-        // Add fracture lines
-        vec2 grid = abs(fract(vUv * 8.0 - 0.5) - 0.5) / fwidth(vUv * 8.0);
-        float lines = min(grid.x, grid.y);
-        
-        // Create shimmering effect
-        float shimmer = sin(v1 * 10.0 + time) * 0.5 + 0.5;
-        
-        // Combine effects
-        float pattern = mix(v1, v2, 0.5) * shimmer;
-        pattern = mix(pattern, 1.0 - lines, 0.3);
-        
-        // Add edge highlighting
-        float edge = 1.0 - smoothstep(0.2, 0.21, lines);
-        pattern += edge * shimmer * 0.5;
-  
-        // Apply text mask
-        float mask = getTextMask(vUv);
-        
-        // Final output with mask
-        gl_FragColor = vec4(color, pattern * mask);
-      }
-    `
-  };
+      return sqrt(m);
+    }
+
+    // Function to create text area mask
+    float getTextMask(vec2 uv) {
+      // Position and size of text area
+      vec2 textPosition = vec2(0.5, 0.2); // Center x, lower y for bottom placement
+      vec2 textSize = vec2(0.4, 0.2);     // Width and height of text area
+      
+      vec2 fromCenter = abs(uv - textPosition);
+      vec2 maskEdge = smoothstep(textSize * 0.5 - 0.01, textSize * 0.5, fromCenter);
+      
+      return 1.0 - (1.0 - maskEdge.x) * (1.0 - maskEdge.y);
+    }
+
+    void main() {
+      // Create crystalline structure
+      float v1 = voronoi(vUv * 5.0);
+      float v2 = voronoi(vUv * 8.0 + time * 0.2);
+      
+      // Add fracture lines with increased width
+      vec2 grid = abs(fract(vUv * 8.0 - 0.5) - 0.5) / (fwidth(vUv * 8.0) * 1.5); // Increased line width
+      float lines = min(grid.x, grid.y);
+      
+      // Create shimmering effect
+      float shimmer = sin(v1 * 10.0 + time) * 0.5 + 0.5;
+      
+      // Combine effects with even lower base transparency
+      float pattern = mix(v1, v2, 0.5) * shimmer;
+      pattern = mix(pattern, 1.0 - lines, 0.2); 
+      
+      // Add edge highlighting with slightly increased width
+      float edge = 1.0 - smoothstep(0.25, 0.26, lines); // Wider edge highlight
+      pattern += edge * shimmer * 0.5;
+
+      // Apply text mask
+      float mask = getTextMask(vUv);
+      
+      // Final output with mask
+      gl_FragColor = vec4(color, pattern * mask);
+    }
+  `
+};
