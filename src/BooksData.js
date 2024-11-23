@@ -65,7 +65,7 @@ export const booksData = [
     shaderCode: CRYSTAL_FRACTURE_SHADER,
     useShader: true,
     blending: 'THREE.AdditiveBlending',
-    animationSpeed: 0.05,
+    animationSpeed: 0.02,
     title: 'CODE: The Hidden Lives of Computer Hardware and Software',
     author: 'CHARLES PETZOLD',
     review: 'I fell in love with computers in school, tinkering away for hours. Unfortunately, by the time I left my undergraduate college, the joy had been sucked out by academic drudgery. This book helped me rediscover my childhood spark, curiosity, and love for computers. Charles Petzold starts with morse code, and layers concepts on top until he demonstrates how actual computers are built. Reading books like these reinforces how ingenious humans are, and how intricate the technology around us really is. And it’s beautiful.'
