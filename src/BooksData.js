@@ -45,7 +45,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'What I Talk About When I Talk About Running',
     author: 'HARUKI MURAKAMI',
-    review: 'An incredible autobiography about what Murakami obsesses about in life: running and writing. I could draw parallels with my own life and craft — being authentic, trying and failing, and being fully immersed in whatever one chooses to do. I particularly liked his long term view on life. He only started writing at 29 and running at 33, but dived in with complete focus, knowing that the next decades would be decicated to these pursuits. My journey as a generalist has been meandering, but rewarding — it has left me prepared for a blue sky of possiblities. I wonder what I’ll focus on in the coming years. It excites me.',
+    review: 'Great craft requires complete immersion and pushing your own standards daily. Murakami embodies this, starting writing at 29 and running at 33, shaping his entire life around these pursuits. Through running, he discovered how excellence comes from training your body and mind to embrace discomfort by showing up every day. His steady persistence resonated deeply with my own journey of being the best design generalist I can, competing only with myself and playing the long game. There’s something meditative about viewing life in decades, and not days. Essential reading for anyone serious about their craft, runner or not.',
   },
   {
     id: 'code-book',
@@ -68,7 +68,7 @@ export const booksData = [
     animationSpeed: 0.05,
     title: 'CODE: The Hidden Lives of Computer Hardware and Software',
     author: 'CHARLES PETZOLD',
-    review: 'I fell in love with computers in school. Unfortunately, by the time I left my undergraduate college, the joy had been sucked out by academic drudgery. This book helped me rediscover my childhood spark, curiosity, and love for computers. Charles Petzold starts with morse code, and layers concepts on top until he demonstrates how actual computers are built. Reading books like these reinforces how ingenious humans are. Computers are truly beautiful.'
+    review: 'I fell in love with computers in school, tinkering away for hours. Unfortunately, by the time I left my undergraduate college, the joy had been sucked out by academic drudgery. This book helped me rediscover my childhood spark, curiosity, and love for computers. Charles Petzold starts with morse code, and layers concepts on top until he demonstrates how actual computers are built. Reading books like these reinforces how ingenious humans are, and how intricate the technology around us really is. And it’s beautiful.'
   },
   {
     id: 'creative-act-book',
@@ -91,7 +91,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'The Creative Act: A Way Of Being',
     author: 'RICK RUBIN',
-    review: 'Truth be told, I’d been stuck in a artistic rut for the longest time. I felt lost. This book helped me diagnose and act on it. I realised I wasn’t being authentic. I wasn’t being vulnerable. I neglected the more menial parts of my craft. Being in the industry for so long had made me change my artistic brain to an analytical one. I’m slowly rediscovering to who I really am and what I enjoy, integrating my strategist, designer and builder sides without any judgement or external validation. Let’s see what happens.'
+    review: 'Authenticity is the only truth, and reading the book helped me reaffirm this belief. This book was a welcome mirror, showing how I’d stopped being vulnerable in my work, avoided the unglamorous parts of craft, and forgotten what originally drew me to create. It reminded me that real work comes from connecting the dots from unique experiences. Trying to fit in the tech industry for so long changed my method of working. I’m learning to let my strategist, designer, and builder sides coexist naturally, without forcing them into isolated professional boxes. Most importantly, I’m rediscovering what it means to create without seeking validation. Let’s see how it goes.'
   },
   {
     id: 'algernon-book',
@@ -114,7 +114,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'Flowers For Algernon',
     author: 'DANIEL KEYES',
-    review: 'It’s hard to condense this book’s meaning into a paragraph. It follows Charlie, who goes from having a mental disability to the smartest person in the world. You see how his innocence is replaced by ego. How his naivete is replaced by anxiety. How his past traumas resurface and dictate his new life. How he loses relations and becomes more isolated. The frustration because he can rationalise his emotions, but the conditioning runs too deep to do anything about it. I could draw many parallels with my own life. It hit like a truck.'
+    review: 'Great stories leave you with profound truths hidden in simple narratives. Daniel Keyes excels in it, following the story of Charlie, who goes from having a mental disability to becoming the smartest person in the world. Through his eyes, we see innocence replaced by pride, naïveté dissolve into anxiety, his intellect breed isolation. His childhood conditioning resurfacing and dictating his new life. Him having everything for a brief moment before losing it all.  It’s ultimately a story about life; where we experience both the beauty and terror of existence along with Charlie. And boy, does it hit hard.'
   },
   {
     id: 'maladies-book',
@@ -126,8 +126,8 @@ export const booksData = [
       metalness: 1,
       roughness: 0.2
     },
-    textColor: '#B8690E',
-    textAccentColor: '#B8690E',
+    textColor: '#B15F00',
+    textAccentColor: '#B15F00',
     bookColor: 0x3d210f,
     particleColor: 0xFF9B69,
     pngColor: 0xFF9B69,
@@ -137,6 +137,6 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'The Emperor of All Maladies',
     author: 'SIDDHARTHA MUKHERJEE',
-    review: 'Not many people know this, but in 2020 I was diagnosed with a life-changing autoimmune disorder, after which I’ve been engrossed by how the human body works. Emperor of All Maladies describes the history of tackling another, more challenging systemic disease: cancer. While the writing was engaging, what stood out to me was human inventiveness. Without really smart people dedicating their life to curing diseases like mine, I’d have been in a very different place. I finished the book feeling grateful to humans who truly make the world a better place.'
+    review: 'The history of cancer research hits different when you’re battling your own serious illness. In 2020, I was diagnosed with a life-changing autoimmune disorder, so every win and setback in the book felt personal. Siddhartha Mukherjee is a poetic storyteller, but what stood out to me was human inventiveness. Without really smart people dedicating their lives to curing diseases, I’d have been in a very different place. My own treatments exist because of human persistence and curiosity. More than a medical history, this book is a story of human triumph and perseverance. Read it to not only understand how far medicine has come, but to paint a hopeful picture about where it’s going.'
   }
 ];

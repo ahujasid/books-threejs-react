@@ -50,11 +50,11 @@ const AnimatedHeader = () => {
   return (
     <div className="first-fold">
       <h1>
-        <AnimatedText text="Top five books I read this year" />
+        <AnimatedText text="Five books that hit different"  delay={500} />
       </h1>
       <h4>
         <AnimatedText 
-          text="I read about 35 books this year. Here are 5 that spoke to me." 
+          text="Reading has been my compass. These books stood out in 2024." 
           delay={1000} // Delay the second animation
         />
       </h4>
