@@ -91,7 +91,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'The Creative Act: A Way Of Being',
     author: 'RICK RUBIN',
-    review: 'Authenticity is the only truth, and reading the book helped me reaffirm this belief. This book was a welcome mirror, showing how I’d stopped being vulnerable in my work, avoided the unglamorous parts of craft, and forgotten what originally drew me to create. It reminded me that real work comes from connecting the dots from unique experiences. Trying to fit in the tech industry for so long changed my method of working. I’m learning to let my strategist, designer, and builder sides coexist naturally, without forcing them into isolated professional boxes. Most importantly, I’m rediscovering what it means to create without seeking validation. Let’s see how it goes.'
+    review: 'Authenticity is the only truth, and reading the book helped me reaffirm this belief. This book was a welcome mirror, showing how I’d stopped being vulnerable in my work, avoided the menial parts of craft, and forgotten what originally drew me to create. It reminded me that real work comes from connecting the dots from unique experiences. Trying to fit in the tech industry for so long changed my method of working. I’m learning to let my strategist, designer, and builder sides coexist naturally, without forcing them into isolated professional boxes. Most importantly, I’m rediscovering what it means to create without seeking validation. Let’s see how it goes.'
   },
   {
     id: 'algernon-book',
