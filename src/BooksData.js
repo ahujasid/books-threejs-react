@@ -45,7 +45,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'What I Talk About When I Talk About Running',
     author: 'HARUKI MURAKAMI',
-    review: 'Great craft requires complete immersion and pushing your own standards daily. Murakami embodies this, starting writing at 29 and running at 33, shaping his entire life around these pursuits. Through running, he discovered how excellence comes from training your body and mind to embrace discomfort by showing up every day. His steady persistence resonated deeply with my own journey of being the best design generalist I can, competing only with myself and playing the long game. There’s something meditative about viewing life in decades, and not days. Essential reading for anyone serious about their craft, runner or not.',
+    review: 'Great craft requires complete immersion and pushing your own standards daily. Murakami embodies this, starting writing at 29 and running at 33, shaping his entire life around these pursuits. Through running, he discovered how excellence comes from training your body and mind to embrace discomfort by showing up every day. His persistence resonated with my own journey of being the best design generalist I can, competing only with myself and playing the long game. There’s something meditative about viewing life in decades, and not days. Essential reading for anyone serious about their craft, runner or not.',
   },
   {
     id: 'code-book',
@@ -114,7 +114,7 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'Flowers For Algernon',
     author: 'DANIEL KEYES',
-    review: 'Great stories leave you with profound truths hidden in simple narratives. Daniel Keyes excels in it, following the story of Charlie, who goes from having a mental disability to becoming the smartest person in the world. Through his eyes, we see innocence replaced by pride, naïveté dissolve into anxiety, his intellect breed isolation. His childhood conditioning resurfacing and dictating his new life. Him having everything for a brief moment before losing it all.  It’s ultimately a story about life; where we experience both the beauty and terror of existence along with Charlie. And boy, does it hit hard.'
+    review: 'Great stories leave you with profound truths hidden in simple narratives. Daniel Keyes excels in it, following the story of Charlie, who goes from having a mental disability to becoming the smartest person in the world. Through his eyes, we see innocence replaced by pride, naïveté dissolve into anxiety, his intellect breed isolation. His childhood conditioning resurfacing and dictating his new life. Him having everything for a brief moment before losing it all.  It’s ultimately a story about life, where we experience both the beauty and terror of existence along with Charlie. And boy, does it hit hard.'
   },
   {
     id: 'maladies-book',
@@ -137,6 +137,6 @@ export const booksData = [
     animationSpeed: 0.02,
     title: 'The Emperor of All Maladies',
     author: 'SIDDHARTHA MUKHERJEE',
-    review: 'The history of cancer research hits different when you’re battling your own serious illness. In 2020, I was diagnosed with a life-changing autoimmune disorder, so every win and setback in the book felt personal. Siddhartha Mukherjee is a poetic storyteller, but what stood out to me was human inventiveness. Without really smart people dedicating their lives to curing diseases, I’d have been in a very different place. My own treatments exist because of human persistence and curiosity. More than a medical history, this book is a story of human triumph and perseverance. Read it to not only understand how far medicine has come, but to paint a hopeful picture about where it’s going.'
+    review: 'The history of cancer research hits different when you’re battling your own serious illness. In 2020, I was diagnosed with a life-changing autoimmune disorder, so every win and setback in the book felt personal. Siddhartha Mukherjee is a poetic storyteller, but what stood out to me was human inventiveness. Without really smart people dedicating their lives to curing diseases, I’d have been in a very different place. My own treatments exist because of human persistence and curiosity. More than a medical history, this book is a story of human triumph and perseverance. Read it to not only understand how far medicine has come, but to have faith that humanity will continue to push it forward.'
   }
 ];
